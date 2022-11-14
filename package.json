@@ -1,0 +1,23 @@
+{
+  "name": "fullstack_finalproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vidyav2/FullStack_FinalProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vidyav2/FullStack_FinalProject/issues"
+  },
+  "homepage": "https://github.com/vidyav2/FullStack_FinalProject#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
