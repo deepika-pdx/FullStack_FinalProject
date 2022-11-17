@@ -1,22 +1,24 @@
 /** @format */
-
-import React from "react";
 import "./App.css";
+import { SplitPane } from "react-multi-split-pane";
+import TopBar from "./components/TopBar";
+import BottomBar from "./components/BottomBar";
+import LeftsideBar from "./components/LeftsideBar";
+import Content from "./components/Content";
+import RightsideBar from "./components/RightsideBar";
 
 function App() {
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch("/dashboard")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
   return (
     <div className="App">
-      <header className="App-header">
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
+      <SplitPane split="horizontal" minSize={50}>
+        <TopBar />
+        <SplitPane split="vertical">
+          <LeftsideBar />
+          <Content />
+          <RightsideBar />
+        </SplitPane>
+        <BottomBar />
+      </SplitPane>
     </div>
   );
 }
