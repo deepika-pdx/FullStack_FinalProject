@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./models/index.js"
+    "start": "node ./models/index.js",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,15 @@
   },
   "homepage": "https://github.com/vidyav2/FullStack_FinalProject#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "kill-port-process": "^3.1.0",
     "mongodb": "^4.11.0",
-    "mongoose": "^6.7.2"
+    "mongoose": "^6.7.2",
+    "react-multi-split-pane": "^0.3.3",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.0.0"
   }
 }
