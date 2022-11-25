@@ -2,27 +2,37 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
+//const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
     firstName: { 
         type: String, 
-        required: true 
+        required: true,
+        trim: true
     },
     lastName: { 
         type: String, 
-        required: true 
+        required: true,
+        trim: true
     },
     email: { 
         type: String, 
         required: true,
-        unique: true
+        unique: true,
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error("Invalid Email Address!")
+            }
+        }
     },
     password: { 
         type: String, 
-        required: true 
+        required: true,
+        unique: true,
     },
 },
 {
+
     timestamps: true
 });
 

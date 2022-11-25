@@ -4,23 +4,25 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Link,
-	Routes, redirect as Redirect, Navigate as navigate,
-  } from "react-router-dom";
+	//Navigate,
+} from "react-router-dom";
   import Signup from "./Signup";
 import Main from "./Main";
-import styles from "../styles/signUp.css";
+//import styles from "../styles/signUp.css";
+//import TopBar from "./TopBar";
 //import Redirect from "redirect";
 
-
-const Login = () => {
+function Login() {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 
 	const [visitMain, setVisitMain] = useState(false);
 
-
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
+		localStorage.setItem("email", data.email);
+		//localStorage.setItem("firstName", data.firstName);
+		//console.log(data);
 	};
 
 	const handleSubmit = async (e) => {
@@ -29,14 +31,8 @@ const Login = () => {
 			const url = "http://localhost:3001/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
+			//localStorage.setItem("token", res.data);
 			setVisitMain(true);
-		
-			
-			//this.history.pushState(null, '/Main');
-			//navigate(<Main />);
-
-			//<Redirect to="/Main" />
-
 		
 		} catch (error) {
 			if (
@@ -84,10 +80,9 @@ const Login = () => {
 							className="input"
 						/>
 						{error && <div className="error_msg" >{error}</div>}
-						<button type="submit" className="green_btn">
+						<button type="submit" className="green_btn"  >
 							Sign In
-						</button>
-						
+						</button>					
 					</form>
 					
 				</div>
@@ -104,5 +99,7 @@ const Login = () => {
 	);
 		
 };
+
+
 
 export default Login;
