@@ -2,32 +2,29 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import './App.css';
 
-function App() {
-  const [itemText, setItemText] = useState('');
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import Icon from "react-crud-icons";
+
+
+
+
+const Content =({mainstate=true})=> {
+   const [itemText, setItemText] = useState('');
   const [listItems, setListItems] = useState([]);
   const [isUpdating, setIsUpdating] = useState('');
   const [updateItemText, setUpdateItemText] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
+  const [visitContent, setVisitContent] = useState(false);
 
-  //add new todo item to database
-  const addItem = async (e) => {
-    e.preventDefault();
-    try{
-      const res = await axios.post('http://localhost:3003/todos', {item: itemText})
-      console.log(itemText)
-      setListItems(prev => [...prev, res.data]);
-      setItemText('');
-    }catch(err){
-      console.log(err);
-    }
-  }
 
-  //Create function to fetch all todo items from database -- we will use useEffect hook
+
+  
   useEffect(()=>{
     const getItemsList = async () => {
       try{
         const res = await axios.get('http://localhost:3003/todos')
         setListItems(res.data);
-        console.log('render')
       }catch(err){
         console.log(err);
       }
@@ -37,8 +34,8 @@ function App() {
 
   // Delete item when click on delete
   const deleteItem = async (id) => {
-    try{
-      const res = await axios.delete(`http://localhost:3003/todos`)
+   try{
+      const res = await axios.delete(`http://localhost:3003/todos/${id}`)
       const newListItems = listItems.filter(item=> item._id !== id);
       setListItems(newListItems);
     }catch(err){
@@ -50,7 +47,7 @@ function App() {
   const updateItem = async (e) => {
     e.preventDefault()
     try{
-      const res = await axios.put(`http://localhost:3003/todos/`, {item: updateItemText})
+      const res = await axios.put(`http://localhost:3003/todos`, {item: updateItemText,id:isUpdating})
       console.log(res.data)
       const updatedItemIndex = listItems.findIndex(item => item._id === isUpdating);
       const updatedItem = listItems[updatedItemIndex].item = updateItemText;
@@ -69,12 +66,9 @@ function App() {
   )
 
   return (
+   
     <div className="App">
       <h2>Todo List</h2>
-      <form className="form" onSubmit={e => addItem(e)}>
-        <input type="text" placeholder='Add Todo Item' onChange={e => {setItemText(e.target.value)} } value={itemText} />
-        <button type="submit">Add</button>
-      </form>
       <div className="todo-listItems">
         {
           listItems.map(item => (
@@ -84,18 +78,18 @@ function App() {
               ? renderUpdateForm()
               : <>
                   <p className="item-content">{item.item}</p>
-                  <button className="update-item" onClick={()=>{setIsUpdating(item._id)}}>Update</button>
-                  <button className="delete-item" onClick={()=>{deleteItem(item._id)}}>Delete</button>
+                  <Icon name="edit" tooltip="Edit" theme="light" size={0} onClick={()=>{setIsUpdating(item._id)}}/>
+                  <Icon name="delete" tooltip="Delete" theme="light" size={0} onClick={()=>{deleteItem(item._id)}}/>
                 </>
             }
           </div>
           ))
-        }
-        
-
+        }     
       </div>
-    </div>
+      </div>
+      
   );
 }
 
-export default App;
+
+export default Content;

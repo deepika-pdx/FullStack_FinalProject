@@ -6,6 +6,9 @@ const TodoItemSchema = new mongoose.Schema({
   item:{
     type:String,
     required: true
+  },
+  date:{
+    type : String,
   }
 })
 
