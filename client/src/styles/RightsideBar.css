@@ -9,9 +9,10 @@
   align-self: center;
 }
 
-.thoughtImageClass {
+.thoughtBgClass {
   background-size: 100%;
   display: flex;
+  background-color: aquamarine;
 }
 
 .newsSpan {
@@ -21,7 +22,7 @@
 }
 
 .newsClass {
-  background-color: antiquewhite;
+  background-color: mintcream;
   overflow-y: scroll;
   width: 100%;
 }
@@ -30,5 +31,9 @@
   font-size: larger;
   font-weight: bold;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-color: darksalmon;
+  background-color: aquamarine;
+}
+
+.newsDetailsClass {
+  color: lightseagreen;
 }

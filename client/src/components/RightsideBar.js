@@ -7,14 +7,12 @@ import { SplitPane } from "react-multi-split-pane";
 
 function RightsideBar() {
   const [simpleThought, setSimpleThought] = useState("");
-  const [thoughtImageUrl, setThoughtImageUrl] = useState("");
   const [latestNews, setLatestNews] = useState("");
 
   const fetchThoughtData = async () => {
     const thoughtResult = await axios("/thoughts");
     const thoughtId = Math.floor(Math.random() * 10);
     setSimpleThought(thoughtResult.data[thoughtId].thought);
-    setThoughtImageUrl(thoughtResult.data[thoughtId].imageUrl);
   };
 
   const fetchNews = async () => {
@@ -26,13 +24,16 @@ function RightsideBar() {
         for (let i = 0; i < data.length; i++) {
           let title = data[i].title;
           newsList.push(
-            <li>
+            <li key={i}>
               <span className="newsSpan">
                 <b>
                   {title}&nbsp;&nbsp;&nbsp;
-                  <a href={data[i].link}>Details</a>
+                  <a href={data[i].link} className="newsDetailsClass">
+                    Details
+                  </a>
                 </b>
               </span>
+              <hr />
             </li>
           );
         }
@@ -56,17 +57,15 @@ function RightsideBar() {
   }, []);
 
   return (
-    <React.Fragment>
-      <SplitPane split="horizontal" minSize={30}>
-        <div className="thoughtImageClass" style={{ backgroundImage: `url(${thoughtImageUrl})` }}>
-          <p className="thoughtClass">{simpleThought}</p>
-        </div>
-        <div className="newsClass">
-          <p className="latestNewsClass">Latest News</p>
-          <ul>{latestNews}</ul>
-        </div>
-      </SplitPane>
-    </React.Fragment>
+    <SplitPane split="horizontal" minSize={30}>
+      <div className="thoughtBgClass">
+        <p className="thoughtClass">{simpleThought}</p>
+      </div>
+      <div className="newsClass">
+        <p className="latestNewsClass">Latest News</p>
+        <ul>{latestNews}</ul>
+      </div>
+    </SplitPane>
   );
 }
 
