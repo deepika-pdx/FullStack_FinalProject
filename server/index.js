@@ -2,7 +2,7 @@
 
 const express = require("express");
 const PORT = process.env.PORT || 3001;
-const db = require("./models/");
+const db = require("./mongodb/DailyDiaryDb");
 const bodyParser = require("body-parser");
 const axios = require("axios");
 
