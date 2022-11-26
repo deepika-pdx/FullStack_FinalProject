@@ -1,6 +1,6 @@
 /** @format */
 
-.waterReminderHeading {
+.waterTrackerHeading {
   display: inline-block;
   align-self: center;
   margin-top: -0.5em;
@@ -14,7 +14,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.waterReminderClass {
+.waterTrackerClass {
   width: 100%;
   background-color: mintcream;
 }

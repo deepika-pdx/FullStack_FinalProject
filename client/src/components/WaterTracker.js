@@ -1,13 +1,13 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import water_image from "../images/WaterReminder/water_icon.png";
-import empty_glass_icon from "../images/WaterReminder/empty_glass_icon.svg";
-import full_glass_icon from "../images/WaterReminder/full_glass_icon.svg";
-import "../styles/WaterReminder.css";
+import water_image from "../images/WaterTracker/water_icon.png";
+import empty_glass_icon from "../images/WaterTracker/empty_glass_icon.svg";
+import full_glass_icon from "../images/WaterTracker/full_glass_icon.svg";
+import "../styles/WaterTracker.css";
 import Popup from "reactjs-popup";
 
-function WaterReminder() {
+function WaterTracker() {
   const [emptyGlassCount, setEmptyGlassCount] = useState(8);
   const [emptyGlassArray, setEmptyGlassArray] = useState([]);
 
@@ -47,10 +47,10 @@ function WaterReminder() {
   }
 
   return (
-    <div className="waterReminderClass">
-      <div className="waterReminderHeading">
+    <div className="waterTrackerClass">
+      <div className="waterTrackerHeading">
         <h3>
-          Water Reminder&nbsp;&nbsp;
+          Water Tracker&nbsp;&nbsp;
           <img src={water_image} alt="water icon" width="30" height="30"></img>
         </h3>
       </div>
@@ -58,15 +58,15 @@ function WaterReminder() {
         Did you drink enough water today?&nbsp;&nbsp;
         {!areMixedGlass &&
           emptyGlassArray.map((i) => {
-            return <img src={empty_glass_icon} alt="empty glass icon" width="30" height="30"></img>;
+            return <img key={i} src={empty_glass_icon} alt="empty glass icon" width="30" height="30"></img>;
           })}
         {areMixedGlass &&
           fullGlassArray.map((j) => {
-            return <img src={full_glass_icon} alt="full glass icon" width="30" height="30"></img>;
+            return <img key={j} src={full_glass_icon} alt="full glass icon" width="30" height="30"></img>;
           })}
         {areMixedGlass &&
           emptyGlassArray.map((k) => {
-            return <img src={empty_glass_icon} alt="empty glass icon" width="30" height="30"></img>;
+            return <img key={k} src={empty_glass_icon} alt="empty glass icon" width="30" height="30"></img>;
           })}
       </div>
       <div>
@@ -85,4 +85,4 @@ function WaterReminder() {
   );
 }
 
-export default WaterReminder;
+export default WaterTracker;
