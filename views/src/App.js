@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { SplitPane } from "react-multi-split-pane";
 import TopBar from "./components/TopBar";
+import BottomBar from "./components/BottomBar";
 import LeftsideBar from "./components/LeftsideBar";
 import Content from "./components/Content";
 import RightsideBar from "./components/RightsideBar";
@@ -12,7 +13,13 @@ import WaterTracker from "./components/WaterTracker";
 import full_glass_icon from "../src/images/WaterTracker/full_glass_icon.svg";
 import leg_exercise_1 from "../src/images/Exercise/leg_exercise_1.gif";
 
+import { Route, Routes, Navigate } from "react-router-dom";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import Main from "./components/Main";
+
 function App() {
+  const user = localStorage.getItem("token");
   const waterTimeInterval = 60000;
   const exerciseTimeInterval = 60000 * 2;
   const waterReminderText = "Hey there!! Please drink enough water!";
@@ -50,21 +57,29 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <SplitPane split="horizontal">
-        <TopBar />
-        <SplitPane split="vertical" className="splitPaneClass">
-          <LeftsideBar />
-          <Content />
-          <RightsideBar />
+    <React.Fragment>
+      <div className="App">
+        <SplitPane split="horizontal">
+          <TopBar />
+          <SplitPane split="vertical" className="splitPaneClass">
+            <LeftsideBar />
+            <Content />
+            <RightsideBar />
+          </SplitPane>
+          <SplitPane split="vertical" className="splitPaneClass">
+            <Exercise />
+            <WaterTracker />
+            <FunActivities />
+          </SplitPane>
         </SplitPane>
-        <SplitPane split="vertical" className="splitPaneClass">
-          <Exercise />
-          <WaterTracker />
-          <FunActivities />
-        </SplitPane>
-      </SplitPane>
-    </div>
+      </div>
+      <Routes>
+        {user && <Route path="/" exact element={<Login />} />}
+        <Route path="/signup" exact element={<Signup />} />
+        <Route path="/login" exact element={<Login />} />
+        <Route path="/" element={<Navigate replace to="/Main" />} />
+      </Routes>
+    </React.Fragment>
   );
 }
 

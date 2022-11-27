@@ -1,13 +1,22 @@
 /** @format */
 
 import React from "react";
+import {redirect as Redirect} from "react-router-dom";
 
-function TopBar() {
+const TopBar = () => {
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		<Redirect to = "/login" ></Redirect>;
+	};
   return (
-    <div>
-      <h1>This is TopBar..!!</h1>
-      <p>Here we can add weather, events, Api heading and Date</p>
-    </div>
+    <div className="main_container">
+			<nav className="navbar">
+				<h1> Hi.. this is the topbar</h1>
+				<button className="white_btn1" onClick={handleLogout}>
+					Logout
+				</button>
+			</nav>
+		</div>
   );
 }
 
