@@ -1,0 +1,38 @@
+/** @format */
+
+.waterTrackerHeading {
+  display: inline-block;
+  align-self: center;
+  margin-top: -0.5em;
+}
+
+.waterClass {
+  margin: 1em;
+  display: flex;
+  justify-content: flex-start;
+  font-size: medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.waterTrackerClass {
+  width: 100%;
+  background-color: mintcream;
+}
+
+.waterButtonClass {
+  background-color: aquamarine;
+  margin-top: 2em;
+  border-radius: 1em;
+}
+
+.waterPopupClass {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 2px solid black;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.5em;
+  background-color: blanchedalmond;
+  border-color: bisque;
+}

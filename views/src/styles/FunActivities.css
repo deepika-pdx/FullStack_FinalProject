@@ -1,0 +1,23 @@
+/** @format */
+
+.funActivitiesClass {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.funActivitiesHeading {
+  display: inline-block;
+  align-self: center;
+  margin-top: -0.5em;
+}
+
+.activitiesBlockClass {
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+}
+
+.individualActClass {
+  margin: 1em;
+  margin-top: -1em;
+}
