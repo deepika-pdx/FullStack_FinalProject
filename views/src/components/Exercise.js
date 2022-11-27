@@ -52,7 +52,7 @@ function Exercise() {
           </button>
         </div>
       </div>
-      <div>
+      <div className="exerciseTextDiv">
         {index === 0 && <p className="exerciseTextClass">Head exercise</p>}
         {index === 1 && <p className="exerciseTextClass">Arm exercise 1</p>}
         {index === 2 && <p className="exerciseTextClass">Arm exercise 2</p>}

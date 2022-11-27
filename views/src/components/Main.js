@@ -14,8 +14,8 @@ import full_glass_icon from "../images/WaterTracker/full_glass_icon.svg";
 import leg_exercise_1 from "../images/Exercise/leg_exercise_1.gif";
 
 function Main() {
-  const waterTimeInterval = 60000;
-  const exerciseTimeInterval = 60000 * 2;
+  const waterTimeInterval = 60000 * 60;
+  const exerciseTimeInterval = 60000 * 60 * 1.5;
   const waterReminderText = "Hey there!! Please drink enough water!";
   const exerciseReminderText = "Hey there!! Try some relaxing exercises!";
 

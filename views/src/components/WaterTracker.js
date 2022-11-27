@@ -69,7 +69,7 @@ function WaterTracker() {
             return <img key={k} src={empty_glass_icon} alt="empty glass icon" width="30" height="30"></img>;
           })}
       </div>
-      <div>
+      <div className="waterButtonAndPopup">
         {glassLimitReached && (
           <Popup trigger={<button className="waterButtonClass">Yes, I just had a glass of water.</button>} position="top center">
             <div className="waterPopupClass">You are on the way to better health. Keep it up!!</div>
