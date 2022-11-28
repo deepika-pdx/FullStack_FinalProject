@@ -13,7 +13,8 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   display: inline-block;
   align-self: center;
-  margin-top: -1.5em;
+  margin-top: -0.5em;
+  margin-left: -12em;
 }
 
 .mainExerciseClass {
@@ -32,4 +33,10 @@
   display: inline-block;
   align-self: center;
   margin: 2em;
+}
+
+.exerciseTextDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

@@ -6,8 +6,8 @@
 }
 
 .funActivitiesHeading {
-  display: inline-block;
-  align-self: center;
+  display: flex;
+  justify-content: center;
   margin-top: -0.5em;
 }
 
