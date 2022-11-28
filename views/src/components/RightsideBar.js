@@ -10,14 +10,14 @@ function RightsideBar() {
   const [latestNews, setLatestNews] = useState("");
 
   const fetchThoughtData = async () => {
-    const thoughtResult = await axios("/thoughts");
+    const thoughtResult = await axios.get("/thoughts");
     const thoughtId = Math.floor(Math.random() * 10);
     setSimpleThought(thoughtResult.data[thoughtId].thought);
   };
 
   const fetchNews = async () => {
     try {
-      const news = await axios("/latestNews");
+      const news = await axios.get("/latestNews");
       const data = news.data;
       if (data != null) {
         const newsList = [];
