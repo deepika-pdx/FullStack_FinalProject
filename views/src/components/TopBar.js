@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import { useState } from "react";
 import Login from "./Login";
@@ -41,5 +39,4 @@ function TopBar() {
     </div>
   );
 }
-
 export default TopBar;
