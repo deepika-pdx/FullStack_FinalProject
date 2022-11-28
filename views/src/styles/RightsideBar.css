@@ -5,14 +5,15 @@
   font-weight: bold;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-style: italic;
-  display: inline-block;
-  align-self: center;
 }
 
 .thoughtBgClass {
   background-size: 100%;
   display: flex;
   background-color: aquamarine;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .newsSpan {

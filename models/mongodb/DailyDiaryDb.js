@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 
 const url =
-  "mongodb+srv://dailyuser:DailyDairy565@dailydairycluster.oj0wdsh.mongodb.net/DailyDatabaseDailyDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://dailyuser:DailyDairy565@dailydairycluster.oj0wdsh.mongodb.net/DailyDatabase?retryWrites=true&w=majority";
 
 const connectionParams = {
   useNewUrlParser: true,
@@ -22,5 +22,3 @@ mongoose
 
 mongoose.set("debug", true);
 mongoose.Promise = Promise;
-
-module.exports.ThoughtData = require("./thoughtdata");

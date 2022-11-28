@@ -15,4 +15,4 @@ const thoughtSchema = new mongoose.Schema({
 
 const ThoughtData = mongoose.model("ThoughtData", thoughtSchema);
 
-module.exports = ThoughtData;
+module.exports = { ThoughtData };
