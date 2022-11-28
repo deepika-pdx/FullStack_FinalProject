@@ -3,7 +3,6 @@ import { SplitPane } from "react-multi-split-pane";
 import TopBar from "./TopBar";
 import BottomBar from "./BottomBar";
 import LeftsideBar from "./LeftsideBar";
-import Content from "./Content";
 import RightsideBar from "./RightsideBar";
 import React, { useState } from "react";
 
@@ -15,7 +14,6 @@ function Main() {
         <TopBar />
         <SplitPane split="vertical">
           <LeftsideBar sendmainstate={setUpdateContent} />
-          <Content mainstate={updateContent}/>
           <RightsideBar />
         </SplitPane>
         <BottomBar />

@@ -4,6 +4,8 @@ const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const { valid } = require("joi");
 //const passport = require("passport");
+//const {localStorage} = require("node-localstorage");
+
 
 router.post('/auth', async (req, res) => {
     try{
@@ -16,7 +18,8 @@ router.post('/auth', async (req, res) => {
             return res.status(401).send({message: "Invalid Email or Password"});
 
         }
-            
+        //localStorage.setItem('email', req.body.email)
+
         const validPassword = await bcrypt.compare(
             req.body.password, user.password);
             console.log(validPassword);

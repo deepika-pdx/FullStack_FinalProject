@@ -14,7 +14,7 @@ function App() {
 
     const getUser = async () => {
 		try {
-			const url = "http://localhost:3001/auth";
+			const url = "http://localhost:3003/auth";
 			const { data } = await axios.get(url, { withCredentials: true });
 			setData(data.user._json);
 		} catch (err) {

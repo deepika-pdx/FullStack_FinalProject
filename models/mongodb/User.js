@@ -21,6 +21,9 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
+    todo:{
+        type: String
+    }
 },
 {
     timestamps: true

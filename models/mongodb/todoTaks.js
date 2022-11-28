@@ -9,7 +9,13 @@ const TodoItemSchema = new mongoose.Schema({
   },
   date:{
     type : String,
-  }
+  },
+  email:{
+    type: String
+  },complete: {
+		type: Boolean,
+		default: false
+	}
 })
 
 //export this Schema

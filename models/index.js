@@ -3,7 +3,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3003;
 const app = express();
 const dailydiarydb = require("./mongodb/DailyDairyDb");
-const TodoItemRoute = require('./routes');
+const TodoItemRoute = require('./routes/routes');
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const cors = require("cors");
@@ -28,7 +28,6 @@ app.use(
 
 const corsOptions ={
   origin:'*',
-  methods: "GET, POST, PUT, DELETE",
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200,
 }
