@@ -1,3 +1,5 @@
+/** @format */
+
 require("dotenv").config();
 
 const express = require("express");
@@ -7,13 +9,23 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
-const cors = require("cors");
 const { User } = require("./mongodb/User");
+const { ThoughtData } = require("./mongodb/thoughtdata");
+const TodoItemRoute = require("./routes/routes");
+const cors = require("cors");
+const cookieSession = require("cookie-session");
 
 const app = express();
 // middlewares
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["4rfv%TGB"],
+    maxAge: 24 * 60 * 60 * 100,
+  })
+);
 
 const corsOptions = {
   origin: "*",
@@ -22,15 +34,9 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-//app.post('/users', (req, res) => { res.redirect(200, "/auth") });
-
-// routes
-app.use("/", userRoutes);
-app.use("/", authRoutes);
-
 app.get("/thoughts", async (req, res) => {
   try {
-    const thoughtData = await db.ThoughtData.find({});
+    const thoughtData = await ThoughtData.find({});
     return res.status(200).json(thoughtData);
   } catch (e) {
     console.log(e);
@@ -97,49 +103,15 @@ app.post("/resetWaterGlassCount", async (req, res) => {
       return res.status(200);
     } else {
       console.log("Error resetting water glass count..!!");
-const TodoItemRoute = require('./routes/routes');
-const userRoutes = require("./routes/users");
-const authRoutes = require("./routes/auth");
-const cors = require("cors");
-//const passport = require("passport");
-const cookieSession = require("cookie-session");
-//const passportSetup = require("./passport");
-
-
-
-// middlewares
-app.use(express.json());
-app.use(
-  cookieSession({
-    name: "session",
-    keys: ["4rfv%TGB"],
-    maxAge: 24*60*60*100,
-  })
-);
-
-//app.use(passport.initialize());
-//app.use(passport.session());
-
-const corsOptions ={
-  origin:'*',
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200,
-}
-app.use(cors(corsOptions));
-
-
-//app.post('/users', (req, res) => { res.redirect(200, "/auth") });
-
-// routes
-app.use("/", userRoutes);
-app.use("/", authRoutes);
-app.use('/', TodoItemRoute);
-
     }
   } catch (e) {
     console.log(e);
   }
 });
+// routes
+app.use("/", userRoutes);
+app.use("/", authRoutes);
+app.use("/", TodoItemRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
