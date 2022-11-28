@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { SplitPane } from "react-multi-split-pane";
 import TopBar from "./TopBar";
 import LeftsideBar from "./LeftsideBar";
-import Content from "./Content";
 import RightsideBar from "./RightsideBar";
 import Exercise from "./Exercise";
 import FunActivities from "./FunActivities";
@@ -70,7 +69,7 @@ function Main() {
         <TopBar />
         <SplitPane split="vertical" className="splitPaneClass">
           <LeftsideBar />
-          <Content />
+          
           <RightsideBar />
         </SplitPane>
         <SplitPane split="vertical" className="splitPaneClass">
@@ -82,5 +81,6 @@ function Main() {
     </div>
   );
 }
+
 
 export default Main;

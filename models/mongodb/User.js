@@ -53,4 +53,4 @@ const validate = (data) => {
 };
 
 module.exports = { User, validate };
-//module.exports = mongoose.model('User', userSchema);
+
