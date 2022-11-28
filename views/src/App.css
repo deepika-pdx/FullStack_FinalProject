@@ -42,7 +42,6 @@
     transform: rotate(360deg);
   }
 }
-
 .Resizer {
   background: #000;
   opacity: 0.2;
@@ -99,4 +98,5 @@
 .DragLayer.vertical {
   cursor: col-resize;
 }
+
 
