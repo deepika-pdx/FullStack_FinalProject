@@ -3,7 +3,6 @@ const {User} = require("../mongodb/User");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const { valid } = require("joi");
-//const passport = require("passport");
 
 router.post('/auth', async (req, res) => {
     try{
@@ -12,17 +11,14 @@ router.post('/auth', async (req, res) => {
             return res.status(400).send({ message: error.details[0].message});
 
         const user = await User.findOne({ email: req.body.email});
-        if(!user){
+        if(!user)
             return res.status(401).send({message: "Invalid Email or Password"});
 
-        }
-            
         const validPassword = await bcrypt.compare(
-            req.body.password, user.password);
-            console.log(validPassword);
-
+            req.body.password, user.password
+        );
         if(!validPassword)
-            return res.status(401).send({message: "Invalid Email or Password"})
+            return res.status(401).send({message: "Invalid Email or Password"});
 
         const token = user.generateAuthToken();
         res.status(200).send({data: token, message: "Logged in successfully!"});
@@ -43,3 +39,4 @@ const validate = (data) => {
 }
 
 module.exports = router;
+
