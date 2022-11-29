@@ -1,7 +1,5 @@
 /** @format */
-
 require("dotenv").config();
-
 const express = require("express");
 const PORT = process.env.PORT || 3001;
 const db = require("./mongodb/DailyDiaryDb");
@@ -14,7 +12,6 @@ const { ThoughtData } = require("./mongodb/thoughtdata");
 const TodoItemRoute = require("./routes/routes");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
-
 const app = express();
 // middlewares
 app.use(express.json());
@@ -26,14 +23,12 @@ app.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
-
 const corsOptions = {
   origin: "*",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-
 app.get("/thoughts", async (req, res) => {
   try {
     const thoughtData = await ThoughtData.find({});
@@ -42,7 +37,6 @@ app.get("/thoughts", async (req, res) => {
     console.log(e);
   }
 });
-
 app.get("/latestNews", async (req, res) => {
   try {
     const newsData = await axios.get(
@@ -61,7 +55,6 @@ app.get("/latestNews", async (req, res) => {
     return res.status(error.response.status).json(errorJson);
   }
 });
-
 app.post("/fetchWaterGlassCount", async (req, res) => {
   try {
     const uEmail = req.body.email;
@@ -75,7 +68,6 @@ app.post("/fetchWaterGlassCount", async (req, res) => {
     console.log(e);
   }
 });
-
 app.post("/updateWaterGlassCount", async (req, res) => {
   try {
     const uEmail = req.body.email;
@@ -92,7 +84,6 @@ app.post("/updateWaterGlassCount", async (req, res) => {
     console.log(e);
   }
 });
-
 app.post("/resetWaterGlassCount", async (req, res) => {
   try {
     const uEmail = req.body.email;
@@ -112,7 +103,6 @@ app.post("/resetWaterGlassCount", async (req, res) => {
 app.use("/", userRoutes);
 app.use("/", authRoutes);
 app.use("/", TodoItemRoute);
-
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
 });

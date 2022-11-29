@@ -1,42 +1,88 @@
-import React from "react";
-import { useState } from "react";
-import Login from "./Login";
+import React, { useEffect, useState } from "react";
+import DateTime from "./DateTime";
 import axios from "axios";
-import Main from "./Main";
-//import { render } from "react-dom";
+import Weather from './Weather';
+import Events from "./Events";
+import '../styles/TopBar.css';
 
-function TopBar() {
-  const [data, setData] = useState({ email: "", password: "" });
-  //console.log(data);
-  const [error, setError] = useState("");
+export function TopBar (){
+	const user=localStorage.getItem("email");
 
-  const handleChange = ({ currentTarget: input }) => {
-    setData({ ...data, [input.name]: input.value });
-    //console.log(data);
-  };
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		localStorage.removeItem("email");
+		window.location.reload();
+	};
 
-  const user = localStorage.getItem("email");
+	// State
+	const [data, setData] = useState([]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    window.location.reload();
-    //<Redirect to = "/login" ></Redirect>;
-  };
+    const getUser = async () => {
+		try {
+			const url = "http://localhost:3001/auth";
+			const { data } = await axios.get(url, { withCredentials: true });
+			setData(data.user._json);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-  return (
-    <div className="main_container">
-      <nav className="navbar">
-        <div>
-          <h1>Logged In User : {user}</h1>
-        </div>
-        <span>
-          <button className="white_btn1" onClick={handleLogout}>
-            Logout
-          </button>
-        </span>
-      </nav>
-    </div>
+	useEffect(() => {
+		getUser();
+	}, []);
+
+	const [lat, setLat] = useState([]);
+  	const [long, setLong] = useState([]);
+
+  	useEffect(() => {
+    const fetchData = async () => {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+
+	  // Weather
+    await fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=metric&APPID=0dcd57de15dc5818f6f4502b50eb8975`)
+      .then(res => res.json())
+      .then(result => {
+        setData(result)
+        console.log(result);
+      });
+    }
+    fetchData();
+  }, [lat,long])
+
+  	return (
+	<>
+	<div className="topBar" data-topbar role="navigation">
+		<ul className="title-area">
+			<li className="name">
+				<h1 className="Title"><b>DAILY DIARY</b></h1>
+				<p className="loggedInUser fixed-top"><b>Logged In User: {user}</b></p>
+				<button className="logOutBtn" onClick={handleLogout}>
+					Logout
+				</button>
+				<div>
+					
+				</div>
+			</li>
+		</ul>
+	<div>
+		<div><Events></Events></div>
+		<div><DateTime></DateTime> </div>
+	<div>{(typeof data.main != 'undefined') ? (
+						<Weather weatherData={data} />
+					) : (
+						<div></div>
+		)}
+	</div>  
+	
+	</div>
+	</div></>
   );
 }
 export default TopBar;
+
+
+
+

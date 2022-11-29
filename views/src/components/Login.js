@@ -1,18 +1,12 @@
-/** @format */
-
 import { useState } from "react";
 import axios from "axios";
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  //Navigate,
+	BrowserRouter as Router,
+	Route,
+	Link,
 } from "react-router-dom";
 import Signup from "./Signup";
 import Main from "./Main";
-//import styles from "../styles/signUp.css";
-//import TopBar from "./TopBar";
-//import Redirect from "redirect";
 
 function Login() {
   const [data, setData] = useState({ email: "", password: "" });
