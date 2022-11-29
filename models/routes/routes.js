@@ -34,9 +34,9 @@ router.get('/todos', async (req, res)=>{
     let month = date_ob.getMonth() + 1;
     let year = date_ob.getFullYear();
     let current_date= month+"/"+ date + "/" + year
-     
+     console.log("EMAIL"+req.query.email)
     //console.log("EMAIL"+localStorage.getItem('email'))   
-    const allTodoItems = await todoItemsModel.find({$and: [{'email':'testgauri@gmail.com','date':current_date}]});
+    const allTodoItems = await todoItemsModel.find({$and: [{'email':req.query.email,'date':current_date}]});
     
     console.log(allTodoItems)
 // prints date & time in YYYY-MM-DD format
@@ -56,7 +56,7 @@ router.get('/todostomorrow', async (req, res)=>{
     let month = date_ob.getMonth() + 1;
     let year = date_ob.getFullYear();
     let current_date= month+"/"+ date + "/" + year
-    const allTodoItems = await todoItemsModel.find({'email': 'testgauri@gmail.com',"date":{$ne:current_date}});
+    const allTodoItems = await todoItemsModel.find({'email': req.query.email,"date":{$ne:current_date}}).sort({date:1});
 
 // prints date & time in YYYY-MM-DD format
     //const allTodoItems =  todoItemsModel.find().populate({match: { date: "2022-11-21"}}).exec();    
@@ -105,6 +105,15 @@ router.delete('/todos/:id', async (req, res)=>{
     res.json(err);
   }
  
+})
+router.get('/todo/complete/:id', async (req, res) => {
+	const todo = await todoItemsModel.findById(req.params.id);
+
+	todo.complete = !todo.complete;
+
+	todo.save();
+
+	res.json(todo);
 })
 
 
