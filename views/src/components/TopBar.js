@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DateTime from "./DateTime";
 import axios from "axios";
 import Weather from './Weather';
+import Events from "./Events";
 import '../styles/TopBar.css';
 
 export function TopBar (){
@@ -67,6 +68,7 @@ export function TopBar (){
 			</li>
 		</ul>
 	<div>
+		<div><Events></Events></div>
 		<div><DateTime></DateTime> </div>
 	<div>{(typeof data.main != 'undefined') ? (
 						<Weather weatherData={data} />
