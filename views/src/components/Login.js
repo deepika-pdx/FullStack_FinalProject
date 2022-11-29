@@ -4,13 +4,9 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Link,
-	//Navigate,
 } from "react-router-dom";
-  import Signup from "./Signup";
+import Signup from "./Signup";
 import Main from "./Main";
-//import styles from "../styles/signUp.css";
-//import TopBar from "./TopBar";
-//import Redirect from "redirect";
 
 function Login() {
 	const [data, setData] = useState({ email: "", password: "" });
@@ -21,6 +17,7 @@ function Login() {
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 		localStorage.setItem("email", data.email);
+		//localStorage.setItem("firstName", data.email);
 		//localStorage.setItem("firstName", data.firstName);
 		//console.log(data);
 	};
@@ -60,7 +57,7 @@ function Login() {
 				<div className="left">
 					<form className="form_container" onSubmit={handleSubmit}>
 						<h1>DAILY DIARY</h1>
-						<h2>Login to Your Account</h2>
+						<h3>Login to Your Account</h3>
 						<input
 							type="email"
 							placeholder="Email"
@@ -99,7 +96,5 @@ function Login() {
 	);
 		
 };
-
-
 
 export default Login;

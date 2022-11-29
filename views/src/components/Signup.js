@@ -38,9 +38,9 @@ const Signup = () => {
         }
     }
     return(
-        <div className= "signup_container">
-            <div className="signup_form_container">
-                <div className="left">
+        <div className= "login_container">
+            <div className="login_form_container">
+                <div className="right">
                     <h1>Welcome Back</h1>
                     <Link to ="/login">
                         <button type="button" className="green_btn">
@@ -48,9 +48,9 @@ const Signup = () => {
                         </button>
                     </Link>
                 </div>
-                <div className="right">
+                <div className="left">
                     <form className="form_container h1" onSubmit={handleSubmit}>
-                        <h1>Create Account</h1>
+                        <h3>Create Account</h3>
                         <input
                             type = "text"
                             placeholder="First Name"

@@ -8,9 +8,10 @@ import RightsideBar from "./RightsideBar";
 
 function Main() {
   return (
-    <div className="Main">
-      <SplitPane split="horizontal" minSize={50}>
+    <div >
+      <SplitPane split="horizontal" maxSize={50} defaultSize={100}>
         <TopBar />
+        
         <SplitPane split="vertical">
           <LeftsideBar />
           <Content />
