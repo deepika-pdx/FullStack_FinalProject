@@ -47,7 +47,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    
+
 
 }
 
@@ -61,12 +61,14 @@
     border-radius: 16px;
     transition: 0.5s;
     cursor: pointer;
-    
+
 }
+
 .todo-tem:hover {
     opacity: 0.8;
     background-color: yellow;
 }
+
 .item-content {
     width: 100%
 }
@@ -77,13 +79,13 @@
 
 .bck-blue {
     display: flex;
-    width:100%;
+    width: 100%;
     background-color: aquamarine;
 }
 
 .bck-white {
     display: flex;
-    width:100%;
+    width: 100%;
     background-color: mintcream;
 }
 
@@ -133,17 +135,19 @@
     background: rgb(255, 255, 255);
     width: 50%;
     padding: 5px;
-    
+
 }
-.scrollable{
-    width:100%;
+
+.scrollable {
+    width: 100%;
     overflow-y: scroll;
 }
+
 .todo-icon {
     height: 10px;
     font-size: x-small;
     margin: 15px;
-    float:right;
+    float: right;
 }
 
 .todo-icon-del {
@@ -172,14 +176,16 @@
 
 .modal {
     font-size: 16px;
-    width:100%;
-   
+    width: 100%;
+
 }
-.buttons-todo{
+
+.buttons-todo {
     background-color: aquamarine;
     border-radius: 1em;
-    margin:20px;
+    margin: 20px;
 }
+
 .button {
     background-color: aquamarine;
     border-color: black;
@@ -192,8 +198,9 @@
     cursor: pointer;
     border-radius: 1em;
     border-width: 2px;
-        
+
 }
+
 .modal>.header {
     width: 100%;
     border-bottom: 1px solid gray;
@@ -240,6 +247,7 @@
     height: .5;
     border-color: '#ffffff';
 }
+
 .todocheckbox {
     width: 20px;
     height: 20px;
@@ -249,16 +257,16 @@
     background-image: linear-gradient(to bottom, transparent, transparent);
     transition: 0.4s;
     margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 .todo.is-complete .checkbox {
     background-color: red;
     background-image: linear-gradient(to bottom, #D81E5B, yellow);
     width: 100%;
- 
+
 }
 
 

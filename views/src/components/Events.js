@@ -7,10 +7,9 @@ function Events() {
 
     const papaConfig = {
         complete: (results, file) => {
-          console.log('Parsing :', results, file);
-          console.log(JSON.stringify(results));
+          
           setArray(results.data);
-          console.log(results.data[0].title);
+          
         },
         download: true,
         header: true,
