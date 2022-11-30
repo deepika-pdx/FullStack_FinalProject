@@ -34,20 +34,20 @@ function Exercise() {
     <div className="mainExerciseClass">
       <div className="exerciseImageClass">
         <div className="exerciseChangeClass">
-          <button onClick={handlePreviousExercise} className="exerciseButtonClass">
+          <button onClick={handlePreviousExercise} className="exercisePrevButtonClass">
             Previous
           </button>
         </div>
-        {index === 0 && <img src={head_exercise} alt="Head exercise" width="160" height="120" />}
-        {index === 1 && <img src={arm_exercise_1} alt="Arm exercise 1" width="160" height="120" />}
-        {index === 2 && <img src={arm_exercise_2} alt="Arm exercise 2" width="160" height="120" />}
-        {index === 3 && <img src={arm_exercise_3} alt="Arm exercise 3" width="160" height="120" />}
-        {index === 4 && <img src={leg_exercise_1} alt="Leg exercise 1" width="160" height="120" />}
-        {index === 5 && <img src={leg_exercise_2} alt="Leg exercise 2" width="160" height="120" />}
-        {index === 6 && <img src={fullbody_exercise_1} alt="Full body exercise 1" width="160" height="120" />}
-        {index === 7 && <img src={fullbody_exercise_2} alt="Full body exercise 2" width="160" height="120" />}
+        {index === 0 && <img src={head_exercise} alt="Head exercise" width="200" height="150" />}
+        {index === 1 && <img src={arm_exercise_1} alt="Arm exercise 1" width="200" height="150" />}
+        {index === 2 && <img src={arm_exercise_2} alt="Arm exercise 2" width="200" height="150" />}
+        {index === 3 && <img src={arm_exercise_3} alt="Arm exercise 3" width="200" height="150" />}
+        {index === 4 && <img src={leg_exercise_1} alt="Leg exercise 1" width="200" height="150" />}
+        {index === 5 && <img src={leg_exercise_2} alt="Leg exercise 2" width="200" height="150" />}
+        {index === 6 && <img src={fullbody_exercise_1} alt="Full body exercise 1" width="200" height="150" />}
+        {index === 7 && <img src={fullbody_exercise_2} alt="Full body exercise 2" width="200" height="150" />}
         <div className="exerciseChangeClass">
-          <button onClick={handleNextExercise} className="exerciseButtonClass">
+          <button onClick={handleNextExercise} className="exerciseNextButtonClass">
             Next
           </button>
         </div>

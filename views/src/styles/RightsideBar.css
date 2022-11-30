@@ -2,41 +2,18 @@
 
 .thoughtClass {
   font-size: larger;
-  font-weight: bold;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-style: italic;
+  display: inline-block;
+  align-content: center;
+  margin-left: 0.5em;
 }
 
 .thoughtBgClass {
   background-size: 100%;
   display: flex;
-  background-color: aquamarine;
+  background-color: #fbe8a6;
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.newsSpan {
-  position: relative;
-  display: block;
-  text-align: left;
-}
-
-.newsClass {
-  background-color: mintcream;
-  overflow-y: scroll;
-  width: 100%;
-}
-
-.latestNewsClass {
-  font-size: larger;
-  font-weight: bold;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-color: aquamarine;
-  display: flex;
-  justify-content: center;
-}
-
-.newsDetailsClass {
-  color: lightseagreen;
 }

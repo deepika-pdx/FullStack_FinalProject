@@ -23,12 +23,12 @@ function FunActivities() {
       <div className="activitiesBlockClass">
         <a href="https://www.autodraw.com/" target="_blank" rel="noopener noreferrer">
           <Tooltip title="Try your hands at Painting">
-            <img src={lets_paint_icon} alt="Painting icon" width="170" height="150" className="individualActClass"></img>
+            <img src={lets_paint_icon} alt="Painting icon" width="170" height="130" className="individualActClass"></img>
           </Tooltip>
         </a>
         <a href="https://puzzlegarage.com/" target="_blank" rel="noopener noreferrer">
           <Tooltip title="Solve Jigsaw Puzzles">
-            <img src={jigsaw_puzzle_icon} alt="Jigsaw puzzles icon" width="170" height="150" className="individualActClass"></img>
+            <img src={jigsaw_puzzle_icon} alt="Jigsaw puzzles icon" width="170" height="130" className="individualActClass"></img>
           </Tooltip>
         </a>
         <a href="https://manybooks.net/" target="_blank" rel="noopener noreferrer">
@@ -37,24 +37,24 @@ function FunActivities() {
               src={books_and_coffee_icon}
               alt="Books and coffee icon"
               width="170"
-              height="150"
+              height="130"
               className="individualActClass"
             ></img>
           </Tooltip>
         </a>
         <a href="https://www.movewithcolour.com/freeclasses" target="_blank" rel="noopener noreferrer">
           <Tooltip title="Try some dance moves">
-            <img src={dance_icon} alt="Dancing kids icon" width="170" height="150" className="individualActClass"></img>
+            <img src={dance_icon} alt="Dancing kids icon" width="170" height="130" className="individualActClass"></img>
           </Tooltip>
         </a>
         <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">
           <Tooltip title="Listen to some soothing music">
-            <img src={music_icon} alt="Listening music icon" width="170" height="150" className="individualActClass"></img>
+            <img src={music_icon} alt="Listening music icon" width="170" height="130" className="individualActClass"></img>
           </Tooltip>
         </a>
         <a href="https://www.youtube.com/c/KunalKapur/videos" target="_blank" rel="noopener noreferrer">
           <Tooltip title="Try some yummy recipes">
-            <img src={recipe_icon} alt="Recipe icon" width="170" height="150" className="individualActClass"></img>
+            <img src={recipe_icon} alt="Recipe icon" width="170" height="130" className="individualActClass"></img>
           </Tooltip>
         </a>
       </div>

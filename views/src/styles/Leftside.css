@@ -1,46 +1,49 @@
+/** @format */
+
 .App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    width: 100%;
-    margin: 10px auto;
-    padding: 10px;
-    border-radius: 8px;
-    overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4976c;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-y: scroll;
 }
 
 .App h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 12px
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 12px;
 }
 
 .form input[type="text"] {
-    padding: 10px;
-    width: 65%;
-    border: 1px solid #eee;
-    border-radius: 6px;
+  padding: 10px;
+  width: 65%;
+  border: 1px solid #eee;
+  border-radius: 6px;
 }
 
 .form input[type="text"]:focus,
 .form button[type="submit"]:focus {
-    outline: none;
+  outline: none;
 }
 
 .form button[type="submit"] {
-    background-color: #008080;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px;
-    cursor: pointer
+  background-color: #FBe8a6;
+  color: black;
+  
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 1em;
+  
 }
 
 .todo-listItems {
@@ -65,69 +68,69 @@
 }
 
 .todo-tem:hover {
-    opacity: 0.8;
-    background-color: yellow;
+  opacity: 0.8;
+  background-color: yellow;
 }
 
 .item-content {
-    width: 100%
+  width: 100%;
 }
 
 .tododate {
-    width: 50%
+  width: 50%;
 }
 
 .bck-blue {
     display: flex;
     width: 100%;
-    background-color: aquamarine;
+    background-color: #FBe8a6;
 }
 
 .bck-white {
     display: flex;
     width: 100%;
-    background-color: mintcream;
+    background-color: floralwhite;
 }
 
 .todo-item button {
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    padding: 8px
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px;
 }
 
 .todo-item button:focus {
-    outline: none
+  outline: none;
 }
 
 .update-item {
-    background-color: goldenrod;
-    color: #fff;
+  background-color: goldenrod;
+  color: #fff;
 }
 
 .delete-item {
-    background-color: red;
-    color: #fff;
+  background-color: red;
+  color: #fff;
 }
 
 .update-form {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .update-new-input {
-    width: 80%;
-    border-radius: 6px;
-    border: 1px solid #eee;
-    padding: 8px;
-    outline: none;
+  width: 80%;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  padding: 8px;
+  outline: none;
 }
 
 .update-new-btn {
-    background-color: darkorchid;
-    color: #fff;
-    cursor: pointer;
+  background-color: darkorchid;
+  color: #fff;
+  cursor: pointer;
 }
 
 .popup-content {
@@ -135,6 +138,7 @@
     background: rgb(255, 255, 255);
     width: 50%;
     padding: 5px;
+    height:fit-content;
 
 }
 
@@ -151,44 +155,47 @@
 }
 
 .todo-icon-del {
-    height: 7px;
+height: 7px;
     font-size: x-small;
+    margin-left: 2em;
     justify-content: right;
-    margin: 3px;
+    margin-right: 2em;
+    margin-bottom: 2em;
 }
 
 .popup-arrow {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
-[role='tooltip'].popup-content {
-    width: 200px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+[role="tooltip"].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
 }
 
 .popup-overlay {
-    background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
-[data-popup='tooltip'].popup-overlay {
-    background: transparent;
+[data-popup="tooltip"].popup-overlay {
+  background: transparent;
 }
 
 .modal {
     font-size: 16px;
     width: 100%;
+    height: 100%;
 
 }
 
 .buttons-todo {
-    background-color: aquamarine;
+   
     border-radius: 1em;
     margin: 20px;
 }
 
 .button {
-    background-color: aquamarine;
-    border-color: black;
+    
+    
     color: black;
     padding: 10px 20px;
     text-align: center;
@@ -198,6 +205,7 @@
     cursor: pointer;
     border-radius: 1em;
     border-width: 2px;
+    background-color: #fbe8a6;
 
 }
 
@@ -209,43 +217,43 @@
     padding: 5px;
 }
 
-.modal>.content {
-    width: 100%;
-    padding: 10px 5px;
-    max-height: 100vh;
-    overflow-y: auto
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
-.modal>.actions {
-    width: 100%;
-    padding: 10px 5px;
-    margin: auto;
-    text-align: center;
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
 }
 
-.modal>.close {
-    cursor: pointer;
-    position: absolute;
-    display: block;
-    padding: 2px 5px;
-    line-height: 20px;
-    right: -10px;
-    top: -10px;
-    font-size: 24px;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid #cfcece;
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
 }
 
 .content-body {
-    width: 100%;
+  width: 100%;
 }
 
 .hr-style {
-    color: '#ffffff';
-    background-color: '#ffffff';
-    height: .5;
-    border-color: '#ffffff';
+  color: "#ffffff";
+  background-color: "#ffffff";
+  height: 0.5;
+  border-color: "#ffffff";
 }
 
 .todocheckbox {
@@ -269,8 +277,14 @@
 
 }
 
-
-
 .todo.is-complete .text {
-    text-decoration: line-through;
+  text-decoration: line-through;
+}
+.todo{
+    width: 100%;
+}
+.text{
+    width:100%;
+    margin-left: 0.5em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
