@@ -9,7 +9,7 @@
 }
 
 .newsClass {
-  background-color: mintcream;
+  background-color: #fbe8a6;
   overflow-y: scroll;
   width: 100%;
 }
@@ -18,11 +18,11 @@
   font-size: larger;
   font-weight: bold;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-color: aquamarine;
+  background-color: #f4976c;
   display: flex;
   justify-content: center;
 }
 
 .newsDetailsClass {
-  color: lightseagreen;
+  color: brown;
 }

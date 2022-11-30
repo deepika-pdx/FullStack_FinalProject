@@ -26,6 +26,7 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-split-pane": "^0.1.92",
+    "reactflow": "^11.3.2",
     "reactjs-popup": "^2.0.5",
     "redirect": "^0.2.0",
     "rsuite": "^5.22.2",
