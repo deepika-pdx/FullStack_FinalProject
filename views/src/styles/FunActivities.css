@@ -3,18 +3,25 @@
 .funActivitiesClass {
   width: 100%;
   overflow-x: scroll;
+  margin-top: -1em;
+  overflow-y: hidden;
+  background-color: mintcream;
 }
 
 .funActivitiesHeading {
   display: flex;
   justify-content: center;
-  margin-top: -0.5em;
+  margin-top: 0.5em;
+  font-size: medium;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .activitiesBlockClass {
   display: flex;
   flex-direction: row;
-  margin: 1em;
+  margin-right: 2.2em;
+  margin-left: 2.2em;
+  margin-top: 0.7em;
 }
 
 .individualActClass {
