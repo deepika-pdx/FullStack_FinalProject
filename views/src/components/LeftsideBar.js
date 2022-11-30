@@ -106,10 +106,10 @@ const LeftsideBar = ({ sendmainstate }) => {
   };
 
   //Update item
-  const updateItem = async (e) => {
-    e.preventDefault();
+  const updateItem = async (open) => {
     try {
-      if(updateItem.length!=0){
+
+      if(updateItemText.length!=0){
         const res = await axios.put(`http://localhost:3001/todos`, { item: updateItemText, id: isUpdating });
         console.log(res.data);
         const updatedItemIndex = listItems.findIndex((item) => item._id === isUpdating);
@@ -120,6 +120,9 @@ const LeftsideBar = ({ sendmainstate }) => {
       }
       else{
         alert("Please enter a valid date")
+
+        setOpen(!open)
+
       }
       
     } catch (err) {
@@ -187,7 +190,7 @@ const LeftsideBar = ({ sendmainstate }) => {
     <form
       className="update-form"
       onSubmit={(e) => {
-        updateItem(e);
+        updateItem(open);
       }}
     >
       <input
