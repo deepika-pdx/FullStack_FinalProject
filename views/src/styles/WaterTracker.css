@@ -18,11 +18,11 @@
 
 .waterTrackerClass {
   width: 100%;
-  background-color: rgb(212, 250, 237);
+  background-color: floralwhite;
 }
 
 .waterButtonClass {
-  background-color: lightpink;
+  background-color: #f4976c;
   margin-top: 2.5em;
   border-radius: 1em;
 }

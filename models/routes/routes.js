@@ -84,13 +84,15 @@ router.put('/todos', async (req, res)=>{
 })
 router.get('/todo/complete/:id', async (req, res) => {
 	const todo = await todoItemsModel.findById(req.params.id);
+  if(todo!=null){
+    todo.complete = !todo.complete;
+    todo.save();
+    res.json(todo);
 
-	todo.complete = !todo.complete;
-
-	todo.save();
-
-	res.json(todo);
+  }
+	
 })
+
 
 
 //Delete item from database
@@ -105,15 +107,6 @@ router.delete('/todos/:id', async (req, res)=>{
     res.json(err);
   }
  
-})
-router.get('/todo/complete/:id', async (req, res) => {
-	const todo = await todoItemsModel.findById(req.params.id);
-
-	todo.complete = !todo.complete;
-
-	todo.save();
-
-	res.json(todo);
 })
 
 
