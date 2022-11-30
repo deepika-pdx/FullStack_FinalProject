@@ -18,8 +18,8 @@ export const DateTime = () => {
             <div className="time">
                 <p><b>Today's Date : {date.toLocaleDateString()}</b></p>
                 <p><b>Current Time : {date.toLocaleTimeString()}</b></p>
-            </div>   
-        </div>
+            </div> 
+            </div>  
     );
 }
 
