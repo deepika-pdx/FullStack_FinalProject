@@ -3,6 +3,8 @@ import DateTime from "./DateTime";
 import axios from "axios";
 import Weather from './Weather';
 import '../styles/TopBar.css';
+import weather from "../images/Weather/Weather.png";
+
 
 export function TopBar (){
 	const user=localStorage.getItem("email");
@@ -54,8 +56,11 @@ export function TopBar (){
   	return (
 	<>
 	<div className="topBar" data-topbar role="navigation">
+	<div>
+    <img src={weather} alt="weather" width="50" height="50"></img>
+  </div>
 		<ul className="title-area">
-			<li className="name">
+			<ul className="name">
 				<h1 className="Title"><b>DAILY DIARY</b></h1>
 				<p className="loggedInUser fixed-top"><b>Logged In User: {user}</b></p>
 				<button className="logOutBtn" onClick={handleLogout}>
@@ -64,7 +69,7 @@ export function TopBar (){
 				<div>
 					
 				</div>
-			</li>
+			</ul>
 		</ul>
 	<div>
 		<div><DateTime></DateTime> </div>

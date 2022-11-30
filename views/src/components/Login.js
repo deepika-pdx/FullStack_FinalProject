@@ -52,24 +52,26 @@ function Login() {
               <form className="form_container" onSubmit={handleSubmit}>
                 <h1 className="h1">DAILY DIARY</h1>
                 <h2 className="h2">Login to Your Account</h2>
-                <input
+                <label for="email">User Email  : <input
                   type="email"
+                  id="email"
                   placeholder="Email"
                   name="email"
                   onChange={handleChange}
                   value={data.email}
                   required
                   className="input"
-                />
-                <input
+                /></label>
+                <label id="password">Password :   <input
                   type="password"
+                  id="password"
                   placeholder="Password"
                   name="password"
                   onChange={handleChange}
                   value={data.password}
                   required
                   className="input"
-                />
+                /></label>
                 {error && <div className="error_msg">{error}</div>}
                 <button type="submit" className="green_btn">
                   Sign In

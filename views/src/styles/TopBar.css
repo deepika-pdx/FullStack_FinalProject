@@ -27,7 +27,8 @@
 }
 
 .logOutBtn {
-  background: #6e2e8a;
+    font: sans-serif;
+  background: darkblue;
   color: white;
   margin: 8px;
   border: none;
@@ -39,7 +40,7 @@
   font-size: 15px;
   cursor: pointer;
   margin-top: 1px;
-  margin-right: 2px;
+  margin-right: 8px;
   position: absolute;
   top: 0;
   right: 0;
@@ -49,11 +50,12 @@
     top:0;
     right: 0;
     text-align: right;
-    color: black;
+    color: firebrick;
     margin-top: 5px;
-    margin-right: 110px;
+    margin-right: 115px;
     position:absolute; 
-    font: icon;
+    font: sans-serif;
+    font-size: 13px;
     
 }
 
@@ -64,17 +66,15 @@
     margin-right: 30px;
 }
 .time {
-  background: -webkit-linear-gradient(rgb(73, 11, 11), rgb(25, 23, 169));
-  -webkit-background-clip: text;
-  background-clip: 0;
-  -webkit-text-fill-color: transparent;
-    color: #fff;
+    color: brown;
     text-align: center;
     width: 400px;
     padding: 3px;
 	top:0;
     right:0; 
-	margin-top: 45px;
-    margin-right: 20px;
+	margin-top: 28px;
+    margin-right: 18px;
     position:absolute; 
+    font: -apple-system;
+    font-size: 16px;
 }

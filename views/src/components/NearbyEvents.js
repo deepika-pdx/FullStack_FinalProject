@@ -28,7 +28,7 @@ const Events = () => {
   ];
 
   return (
-    <section>
+    <div className="section">
       <h2 className="heading"><b>
         Events Around Us!!
         </b>
@@ -38,7 +38,7 @@ const Events = () => {
           <EventsDisplay title={title} content={content} fields={fields} />
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 
