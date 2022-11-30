@@ -19,23 +19,25 @@
 
 .mainExerciseClass {
   width: 100%;
+  background-color: rgb(212, 250, 237);
 }
 
 .exercisePrevButtonClass {
-  background-color: aquamarine;
+  background-color: lightpink;
   border-radius: 1em;
   margin-right: 1em;
   margin-top: -1em;
   width: 5em;
-  margin-left: -1.8em;
+  margin-left: -1.5em;
 }
 
 .exerciseNextButtonClass {
-  background-color: aquamarine;
+  background-color: lightpink;
   border-radius: 1em;
   margin-top: -1em;
   width: 5em;
   margin-right: -1em;
+  margin-left: -0.7em;
 }
 
 .exerciseChangeClass {

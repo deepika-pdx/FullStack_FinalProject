@@ -4,7 +4,7 @@
   position: relative;
   display: block;
   text-align: left;
-  font-size: small;
+  font-size: 1.5ch;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
@@ -21,7 +21,6 @@
   background-color: aquamarine;
   display: flex;
   justify-content: center;
-  margin-top: -0.05em;
 }
 
 .newsDetailsClass {

@@ -73,10 +73,10 @@ function Main() {
           <LeftsideBar />
           <RightsideBar />
         </SplitPane>
-        <SplitPane split="vertical" className="splitPaneClass" defaultSizes={[200, 250, 250]}>
+        <SplitPane split="vertical" className="splitPaneClass" defaultSizes={[150, 230, 150]}>
           <Exercise />
-          <WaterTracker />
           <FunActivities />
+          <WaterTracker />
         </SplitPane>
       </SplitPane>
     </div>
