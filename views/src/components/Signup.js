@@ -48,42 +48,46 @@ const Signup = () => {
         <div className="left">
           <form className="form_container h1" onSubmit={handleSubmit}>
             <h2 className="h2">Create Account</h2>
-            <input
+           <label id="text">First Name :  <input
               type="text"
+              id="text"
               placeholder="First Name"
               name="firstName"
               onChange={handleChange}
               value={data.firstName}
               required
               className="input"
-            />
-            <input
+            /></label>
+            <label id="text">Last Name :  <input
               type="text"
+              id="text"
               placeholder="Last Name"
               name="lastName"
               onChange={handleChange}
               value={data.lastName}
               required
               className="input"
-            />
-            <input
+            /></label>
+            <label id="email">User Email : <input
               type="email"
+              id="email"
               placeholder="Email"
               name="email"
               onChange={handleChange}
               value={data.email}
               required
               className="input"
-            />
-            <input
+            /></label>
+            <label id="password">Password :  <input
               type="password"
+              id="password"
               placeholder="Password"
               name="password"
               onChange={handleChange}
               value={data.password}
               required
               className="input"
-            />
+            /></label>
             {error && <div className="error_msg"> {error}</div>}
             <button type="submit" className="green_btn">
               Sign Up

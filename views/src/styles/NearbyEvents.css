@@ -1,14 +1,26 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     
+  } */
+  
+  .section {
+    background-color: #f4976c;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    direction: rtl;
+    /* overflow-y: hidden; */
   }
   
   .accordion {
     max-width: 600px;
-    width: 360px;
-    margin: 1rem auto;
+    width: 345px;
+    margin: 0.2rem auto;
+    
   }
   
   .accordion-title {
@@ -18,25 +30,27 @@
     justify-content: space-between;
     cursor: pointer;
     background-color: #fbe8a6;
+    direction: ltr;
   }
   
   .accordion-title:hover {
-    background-color: #b4dfe5;
+    background-color: lightgoldenrodyellow;
   }
   
   .accordion-title,
   .accordion-content {
-    padding: 1rem;
+    padding: 0.5rem;
   }
   
   .accordion-content {
-    background-color: #d2fdff ;
+    background-color: lightyellow ;
+    direction: ltr;
   }
 
   .heading{
-    text-align: left;
-    color: #46129a;
-    /* background-color: #ebf46c; */
+    text-align: center;
+    color: black;
+    direction: ltr;
   }
   
   @media screen and (max-width: 700px) {
