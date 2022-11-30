@@ -13,10 +13,6 @@ function RightsideBar() {
     setSimpleThought(thoughtResult.data[thoughtId].thought);
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
   useEffect(() => {
     // Fetch thoughts from DailyDiaryDatabase
     fetchThoughtData();
