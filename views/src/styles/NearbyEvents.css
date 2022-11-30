@@ -5,20 +5,9 @@
     
   }
   
-  /* body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
-    background: rgb(238, 174, 202);
-    background: radial-gradient(
-      circle,
-      rgba(238, 174, 202, 1) 0%,
-      rgba(199, 233, 148, 1) 100%
-    );
-  } */
-  
   .accordion {
     max-width: 600px;
-    width: 800px;
+    width: 360px;
     margin: 1rem auto;
   }
   
@@ -28,11 +17,11 @@
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
-    background-color: aquamarine;
+    background-color: #fbe8a6;
   }
   
   .accordion-title:hover {
-    background-color: #3ab4cc;
+    background-color: #b4dfe5;
   }
   
   .accordion-title,
@@ -41,12 +30,13 @@
   }
   
   .accordion-content {
-    background-color: rgb(253, 154, 169) ;
+    background-color: #d2fdff ;
   }
 
   .heading{
-    text-align: center;
+    text-align: left;
     color: #46129a;
+    /* background-color: #ebf46c; */
   }
   
   @media screen and (max-width: 700px) {
