@@ -10,21 +10,25 @@ import Popup from "reactjs-popup";
 import { useNavigate } from "react-router-dom";
 import Icon from "react-crud-icons";
 import "../styles/Leftside.css";
+import { date } from "joi";
 
 const LeftsideBar = ({ sendmainstate }) => {
   const [itemText, setItemText] = useState("");
   const [listItems, setListItems] = useState([]);
   const [listItemsup, setListItemsup] = useState([]);
+    const[templistup,settemplistup] = useState([]);
+
 
   const [isUpdating, setIsUpdating] = useState("");
   const [isUpdatingup, setIsUpdatingup] = useState("");
-
+  const [showButton, setShowButton] = useState(true);
   const [updateItemText, setUpdateItemText] = useState("");
   const [updateItemTextup, setUpdateItemTextup] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [visitContent, setVisitContent] = useState(false);
   const [updateDate, setupdateDate] = useState("");
-
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
   const user = localStorage.getItem("email");
 
   const addItem = async (e) => {
@@ -36,7 +40,13 @@ const LeftsideBar = ({ sendmainstate }) => {
       //this.setState({ date: formattedDate });
       console.log(formattedDate);
       const res = await axios.post("http://localhost:3001/todos", { item: itemText, date: formattedDate, email: user });
-      setListItems((prev) => [...prev, res.data]);
+      const current = new Date();
+      if(current.getTime() < (startDate.getTime())){
+        setListItemsup((prev) => [...prev, res.data]);
+      }
+      else{
+        setListItems((prev) => [...prev, res.data])
+      }
       setItemText("");
       setVisitContent(true);
       //navigate(`/Main.js`)
@@ -46,28 +56,28 @@ const LeftsideBar = ({ sendmainstate }) => {
   };
   useEffect(() => {
     const getItemsList = async () => {
-      try {
-        const res = await axios.get("http://localhost:3001/todostomorrow");
-        setListItemsup(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+     fetch('http://localhost:3001/todostomorrow?'+ new URLSearchParams({
+    email: user,
+}))
+			.then(res => res.json())
+			.then(data => setListItemsup(data))
+			.catch((err) => console.error("Error: ", err));
+      settemplistup(listItemsup)
+	}
+    
     getItemsList();
   }, []);
   useEffect(() => {
-    const getItemsList = async () => {
-      try {
-        const res = await axios.get("http://localhost:3001/todos", { email: user });
-
-        setListItems(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getItemsList();
+    const GetTodos = async() => {
+		fetch('http://localhost:3001/todos?'+ new URLSearchParams({
+    email: user,
+}))
+			.then(res => res.json())
+			.then(data => setListItems(data))
+			.catch((err) => console.error("Error: ", err));
+	}
+    GetTodos();
   }, []);
-
   // Delete item when click on delete
   const deleteItem = async (id) => {
     try {
@@ -103,24 +113,41 @@ const LeftsideBar = ({ sendmainstate }) => {
     }
   };
   const updateItemup = async (e) => {
-    e.preventDefault();
+     e.preventDefault();
     try {
-      let formattedDate = `${updateDate.getMonth() + 1}/${updateDate.getDate()}/${updateDate.getFullYear()}`;
-      console.log(formattedDate);
-      const res = await axios.put(`http://localhost:3001/todos`, {
+      
+        let formattedDate = `${updateDate.getMonth() + 1}/${updateDate.getDate()}/${updateDate.getFullYear()}`;
+        console.log(formattedDate);
+        const res = await axios.put(`http://localhost:3001/todos`, {
         item: updateItemTextup,
         id: isUpdatingup,
         date: formattedDate,
       });
-      console.log(res.data);
-      const updatedItemIndex = listItemsup.findIndex((item) => item._id === isUpdatingup);
-      const updatedItem = (listItemsup[updatedItemIndex].item = updateItemTextup);
-      setUpdateItemTextup("");
-      setIsUpdatingup("");
+        console.log(res.data);
+        const updatedItemIndex = listItemsup.findIndex((item) => item._id === isUpdatingup);
+        const updatedItem = (listItemsup[updatedItemIndex].item = updateItemTextup);
+        setUpdateItemTextup("");
+        setIsUpdatingup("");
+        
+      
+      
+      
     } catch (err) {
       console.log(err);
     }
   };
+  const completeTodo = async id => {
+		const data = await fetch('http://localhost:3001/todo/complete/' + id).then(res => res.json());
+
+		setListItems(listItems => listItems.map(item => {
+			if (item._id === data._id) {
+				item.complete = data.complete;
+			}
+
+			return item;
+		}));
+		
+	}
   //before updating item we need to show input field where we will create our updated item
   const renderUpdateForm = () => (
     <form
@@ -184,9 +211,12 @@ const LeftsideBar = ({ sendmainstate }) => {
           },
         ]}
       />
-      <button className="update-new-btn" type="submit">
-        Update
+      <div className="buttons-todo">
+       < button className="update-new-btn" type="submit">Update
       </button>
+     
+       </div>
+        
     </form>
   );
 
@@ -233,15 +263,22 @@ const LeftsideBar = ({ sendmainstate }) => {
       <div className="header">Today's Task</div>
       <div className="content-body">
         <div className="todo-listItems">
+          
           {Array.isArray(listItems)
             ? listItems.map((item, index) => (
                 <div className={index % 2 == 0 ? "bck-blue" : "bck-white"}>
+                  <div className={
+						"todo" + (item.complete ? " is-complete" : "")
+					} key={item._id} onClick={() => completeTodo(item._id)}>
+            
+
                   <div className="todo-item">
                     {isUpdating === item._id ? (
                       renderUpdateForm()
                     ) : (
                       <>
-                        <p className="item-content">{item.item}</p>
+                       <div className="todocheckbox"></div>
+                        <div className="text"><p className="item-content">{item.item}</p></div>
                         <Icon
                           className="todo-icon"
                           name="edit"
@@ -254,8 +291,8 @@ const LeftsideBar = ({ sendmainstate }) => {
                         />
                         <Icon
                           className="todo-icon-del"
-                          name="delete"
-                          tooltip="Delete"
+                          name="check"
+                          tooltip="Check"
                           theme="light"
                           size="medium"
                           onClick={() => {
@@ -265,17 +302,30 @@ const LeftsideBar = ({ sendmainstate }) => {
 
                         <hr className="hr-style" />
                       </>
+                      
                     )}
+                    
+				
+                    
                   </div>
+                  </div>
+                
                 </div>
               ))
-            : null}
+            : <p>You currently have no tasks</p>}
         </div>
       </div>
-
-      <Popup trigger={<button className="button"> View upcoming schedule </button>} modal nested>
+     
+        <div className="buttons-todo">
+        <button  class="button" onClick={() => setOpen(o => !o)}>
+        Upcoming tasks
+      </button>      
+      </div>                
+      <Popup open={open} closeOnDocumentClick onClose={closeModal} modal nested>
         <div className="modal">
-          <div className="header">Upcoming Scheduled Tasks:</div>
+           <a className="close" onClick={closeModal}>
+            &times;
+          </a>
 
           <div className="content">
             <div className="todo-listItems">
@@ -289,7 +339,7 @@ const LeftsideBar = ({ sendmainstate }) => {
                           <>
                             <p className="item-content">{item.item}</p>
                             <div className="tododate">{item.date}</div>
-                            <Icon
+                            <Icon className="todo-icon"
                               name="edit"
                               tooltip="Edit"
                               theme="light"
@@ -298,9 +348,9 @@ const LeftsideBar = ({ sendmainstate }) => {
                                 setIsUpdatingup(item._id);
                               }}
                             />
-                            <Icon
-                              name="delete"
-                              tooltip="Delete"
+                            <Icon className="todo-icon-del"
+                              name="check"
+                              tooltip="check"
                               theme="light"
                               size="medium"
                               onClick={() => {
@@ -317,7 +367,7 @@ const LeftsideBar = ({ sendmainstate }) => {
           </div>
         </div>
       </Popup>
-    </div>
+      </div>
   );
 };
 

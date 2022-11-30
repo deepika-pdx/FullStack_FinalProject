@@ -29,7 +29,9 @@
     "reactjs-popup": "^2.0.5",
     "redirect": "^0.2.0",
     "rsuite": "^5.22.2",
-    "web-vitals": "^2.1.4"
+    "semantic-ui-react": "^2.1.4",
+    "web-vitals": "^2.1.4",
+    "webpack-cli": "^5.0.0"
   },
   "proxy": "http://localhost:3001",
   "scripts": {
