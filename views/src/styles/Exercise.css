@@ -19,11 +19,11 @@
 
 .mainExerciseClass {
   width: 100%;
-  background-color: rgb(212, 250, 237);
+  background-color: floralwhite;
 }
 
 .exercisePrevButtonClass {
-  background-color: lightpink;
+  background-color: #f4976C;
   border-radius: 1em;
   margin-right: 1em;
   margin-top: -1em;
@@ -32,7 +32,7 @@
 }
 
 .exerciseNextButtonClass {
-  background-color: lightpink;
+  background-color: #f4976C;
   border-radius: 1em;
   margin-top: -1em;
   width: 5em;

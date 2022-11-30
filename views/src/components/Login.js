@@ -50,8 +50,8 @@ function Login() {
           <div className="login_form_container">
             <div className="left">
               <form className="form_container" onSubmit={handleSubmit}>
-                <h1>DAILY DIARY</h1>
-                <h2>Login to Your Account</h2>
+                <h1 className="h1">DAILY DIARY</h1>
+                <h2 className="h2">Login to Your Account</h2>
                 <input
                   type="email"
                   placeholder="Email"
@@ -79,7 +79,7 @@ function Login() {
             <div className="right">
               <h1>New Here?</h1>
               <Link to="/signup">
-                <button type="button" className="white_btn">
+                <button type="button" className="green_btn">
                   Sign Up
                 </button>
               </Link>
