@@ -35,21 +35,28 @@ const LeftsideBar = ({ sendmainstate }) => {
     e.preventDefault();
     try {
       //console.log(itemText)
-
-      let formattedDate = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
-      //this.setState({ date: formattedDate });
-      console.log(formattedDate);
-      const res = await axios.post("http://localhost:3001/todos", { item: itemText, date: formattedDate, email: user });
-      const current = new Date();
-      if(current.getTime() < (startDate.getTime())){
-        setListItemsup((prev) => [...prev, res.data]);
+      if(itemText.length==0){
+        alert("Please enter value for you task")
+      }
+      else if(startDate==null){
+        alert("Please enter date assigned to the task")
       }
       else{
-        setListItems((prev) => [...prev, res.data])
+        let formattedDate = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
+      //this.setState({ date: formattedDate });
+        console.log(formattedDate);
+        const res = await axios.post("http://localhost:3001/todos", { item: itemText, date: formattedDate, email: user });
+        const current = new Date();
+        if(current.getTime() < (startDate.getTime())){
+          setListItemsup((prev) => [...prev, res.data]);
+        }
+        else{
+          setListItems((prev) => [...prev, res.data])
+        }
+        setItemText("");
+        setVisitContent(true);
       }
-      setItemText("");
-      setVisitContent(true);
-      //navigate(`/Main.js`)
+      
     } catch (err) {
       console.log(err);
     }
@@ -99,37 +106,55 @@ const LeftsideBar = ({ sendmainstate }) => {
   };
 
   //Update item
-  const updateItem = async (e) => {
-    e.preventDefault();
+  const updateItem = async (open) => {
     try {
-      const res = await axios.put(`http://localhost:3001/todos`, { item: updateItemText, id: isUpdating });
-      console.log(res.data);
-      const updatedItemIndex = listItems.findIndex((item) => item._id === isUpdating);
-      const updatedItem = (listItems[updatedItemIndex].item = updateItemText);
-      setUpdateItemText("");
-      setIsUpdating("");
+
+      if(updateItemText.length!=0){
+        const res = await axios.put(`http://localhost:3001/todos`, { item: updateItemText, id: isUpdating });
+        console.log(res.data);
+        const updatedItemIndex = listItems.findIndex((item) => item._id === isUpdating);
+        const updatedItem = (listItems[updatedItemIndex].item = updateItemText);
+        setUpdateItemText("");
+        setIsUpdating("");
+
+      }
+      else{
+        alert("Please enter a valid date")
+
+        setOpen(!open)
+
+      }
+      
     } catch (err) {
       console.log(err);
     }
   };
-  const updateItemup = async (e) => {
-     e.preventDefault();
+  const updateItemup = async (open) => {
+     //e.preventDefault();
     try {
-      
-        let formattedDate = `${updateDate.getMonth() + 1}/${updateDate.getDate()}/${updateDate.getFullYear()}`;
-        console.log(formattedDate);
-        const res = await axios.put(`http://localhost:3001/todos`, {
-        item: updateItemTextup,
-        id: isUpdatingup,
-        date: formattedDate,
-      });
-        console.log(res.data);
-        const updatedItemIndex = listItemsup.findIndex((item) => item._id === isUpdatingup);
-        const updatedItem = (listItemsup[updatedItemIndex].item = updateItemTextup);
-        setUpdateItemTextup("");
-        setIsUpdatingup("");
-        
-      
+        const dateup =updateDate.toString()
+        if(updateItemTextup.length!=0 && dateup.length!=0){
+          let formattedDate = `${updateDate.getMonth() + 1}/${updateDate.getDate()}/${updateDate.getFullYear()}`;
+         console.log(formattedDate);
+          const res = await axios.put(`http://localhost:3001/todos`, {
+          item: updateItemTextup,
+          id: isUpdatingup,
+          date: formattedDate,
+          });
+          console.log(res.data);
+          const updatedItemIndex = listItemsup.findIndex((item) => item._id === isUpdatingup);
+          const updatedItem = (listItemsup[updatedItemIndex].item = updateItemTextup);
+          setUpdateItemTextup("");
+          setIsUpdatingup("");
+        }
+        else if(dateup.length==0){
+          alert("Please enter valid date for update")
+          setOpen(!open)
+        }
+        else if(updateItemTextup.length!=0){
+          alert("Please enter some value in the todo if you want to edit")
+          setOpen(!open)
+        }
       
       
     } catch (err) {
@@ -148,12 +173,24 @@ const LeftsideBar = ({ sendmainstate }) => {
 		}));
 		
 	}
+  const completeTodoup = async id => {
+		const data = await fetch('http://localhost:3001/todo/complete/' + id).then(res => res.json());
+
+		setListItemsup(listItemsup => listItemsup.map(item => {
+			if (item._id === data._id) {
+				item.complete = data.complete;
+			}
+
+			return item;
+		}));
+		
+	}
   //before updating item we need to show input field where we will create our updated item
   const renderUpdateForm = () => (
     <form
       className="update-form"
       onSubmit={(e) => {
-        updateItem(e);
+        updateItem(open);
       }}
     >
       <input
@@ -175,7 +212,7 @@ const LeftsideBar = ({ sendmainstate }) => {
     <form
       className="update-form"
       onSubmit={(e) => {
-        updateItemup(e);
+        updateItemup(!open);
       }}
     >
       <input
@@ -193,7 +230,7 @@ const LeftsideBar = ({ sendmainstate }) => {
         onChange={(date) => setupdateDate(date)}
         isClearable
         popperClassName="some-custom-class"
-        popperPlacement="top-end"
+        popperPlacement="top-end" minDate={new Date()}
         popperModifiers={[
           {
             name: "offset",
@@ -212,7 +249,7 @@ const LeftsideBar = ({ sendmainstate }) => {
         ]}
       />
       <div className="buttons-todo">
-       < button className="update-new-btn" type="submit">Update
+       < button className="update-new-btn" type="submit" >Update
       </button>
      
        </div>
@@ -237,7 +274,7 @@ const LeftsideBar = ({ sendmainstate }) => {
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           isClearable
-          popperClassName="some-custom-class"
+          popperClassName="some-custom-class" minDate={new Date()}
           popperPlacement="top-end"
           popperModifiers={[
             {
@@ -328,16 +365,21 @@ const LeftsideBar = ({ sendmainstate }) => {
           </a>
 
           <div className="content">
+            
             <div className="todo-listItems">
               {Array.isArray(listItemsup)
                 ? listItemsup.map((item, index) => (
                     <div className={index % 2 == 0 ? "bck-blue" : "bck-white"}>
+                       <div className={
+						"todo" + (item.complete ? " is-complete" : "")
+					} key={item._id} onClick={() => completeTodoup(item._id)}>
                       <div className="todo-item">
                         {isUpdatingup === item._id ? (
                           renderUpdateFormup()
                         ) : (
                           <>
-                            <p className="item-content">{item.item}</p>
+                            <div className="todocheckbox"></div>
+                            <div className="text"><p className="item-content">{item.item}</p></div>
                             <div className="tododate">{item.date}</div>
                             <Icon className="todo-icon"
                               name="edit"
@@ -359,6 +401,7 @@ const LeftsideBar = ({ sendmainstate }) => {
                             />
                           </>
                         )}
+                      </div>
                       </div>
                     </div>
                   ))
