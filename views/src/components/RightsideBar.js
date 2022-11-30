@@ -1,8 +1,7 @@
-/** @format */
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/RightsideBar.css";
+import NearbyEvents from "./NearbyEvents";
 import { SplitPane } from "react-multi-split-pane";
 
 function RightsideBar() {
@@ -24,9 +23,8 @@ function RightsideBar() {
       <div className="thoughtBgClass">
         <p className="thoughtClass">{simpleThought}</p>
       </div>
-      <div>Add event data here</div>
+      <div><NearbyEvents></NearbyEvents></div>
     </SplitPane>
   );
 }
-
 export default RightsideBar;
