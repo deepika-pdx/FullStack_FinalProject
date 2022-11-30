@@ -8,25 +8,34 @@
 }
 
 .exerciseTextClass {
-  font-size: medium;
+  font-size: large;
   font-weight: bold;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   display: inline-block;
   align-self: center;
-  margin-top: -0.5em;
-  margin-left: -12em;
+  margin-top: -2em;
+  margin-left: -2em;
 }
 
 .mainExerciseClass {
   width: 100%;
 }
 
-.exerciseButtonClass {
+.exercisePrevButtonClass {
   background-color: aquamarine;
   border-radius: 1em;
   margin-right: 1em;
   margin-top: -1em;
   width: 5em;
+  margin-left: -1.8em;
+}
+
+.exerciseNextButtonClass {
+  background-color: aquamarine;
+  border-radius: 1em;
+  margin-top: -1em;
+  width: 5em;
+  margin-right: -1em;
 }
 
 .exerciseChangeClass {

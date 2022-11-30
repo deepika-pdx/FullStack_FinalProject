@@ -9,6 +9,8 @@
   display: flex;
   justify-content: center;
   margin-top: -0.5em;
+  font-size: medium;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .activitiesBlockClass {
