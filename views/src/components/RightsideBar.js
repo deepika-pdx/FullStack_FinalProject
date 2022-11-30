@@ -13,7 +13,10 @@ function RightsideBar() {
     setSimpleThought(thoughtResult.data[thoughtId].thought);
   };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
   useEffect(() => {
     // Fetch thoughts from DailyDiaryDatabase
     fetchThoughtData();
@@ -24,7 +27,11 @@ function RightsideBar() {
       <div className="thoughtBgClass">
         <p className="thoughtClass">{simpleThought}</p>
       </div>
+<<<<<<< HEAD
       <div><NearbyEvents></NearbyEvents></div>
+=======
+      <div>Add event data here</div>
+>>>>>>> origin/main
     </SplitPane>
   );
 }
