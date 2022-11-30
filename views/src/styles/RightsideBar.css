@@ -17,3 +17,23 @@
   display: flex;
   justify-content: center;
 }
+ @media (min-width: 1024px){
+  .thoughtClass {
+      font-size: larger;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      font-style: italic;
+      display: inline-block;
+      align-content: center;
+      margin-left: 0.5em;
+    }
+  
+    .thoughtBgClass {
+      background-size: 100%;
+      display: flex;
+      background-color: #fbe8a6;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+ }

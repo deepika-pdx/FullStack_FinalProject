@@ -28,3 +28,34 @@
   margin: 1em;
   margin-top: -1em;
 }
+@media (min-width: 1024px){
+  .funActivitiesClass {
+      width: 100%;
+      overflow-x: scroll;
+      margin-top: -1em;
+      overflow-y: hidden;
+      background-color: #fbe8a6;
+    }
+  
+    .funActivitiesHeading {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5em;
+      font-size: medium;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    }
+  
+    .activitiesBlockClass {
+      display: flex;
+      flex-direction: row;
+      margin-right: 2.2em;
+      margin-left: 2.2em;
+      margin-top: 0.7em;
+    }
+  
+    .individualActClass {
+      margin: 1em;
+      margin-top: -1em;
+    }
+
+}

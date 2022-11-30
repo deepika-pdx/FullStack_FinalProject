@@ -1,4 +1,4 @@
-* {
+/** {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -57,4 +57,67 @@
     .accordion {
       width: 90%;
     }
+  }
+
+    @media (min-width: 1024px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    
+      }
+    
+      /* body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 20px;
+        background: rgb(238, 174, 202);
+        background: radial-gradient(
+          circle,
+          rgba(238, 174, 202, 1) 0%,
+          rgba(199, 233, 148, 1) 100%
+        );
+      } */
+    
+      .accordion {
+        max-width: 600px;
+        width: 800px;
+        margin: 1rem auto;
+      }
+    
+      .accordion-title {
+        /* font-size: large; */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        cursor: pointer;
+        background-color: aquamarine;
+      }
+    
+      .accordion-title:hover {
+        background-color: #3ab4cc;
+      }
+    
+      .accordion-title,
+      .accordion-content {
+        padding: 1rem;
+      }
+    
+      .accordion-content {
+        background-color: rgb(253, 154, 169);
+      }
+    
+      .heading {
+        text-align: center;
+        color: #46129a;
+      }
+    
+      @media screen and (max-width: 700px) {
+        body {
+          font-size: 18px;
+        }
+    
+        .accordion {
+          width: 90%;
+        }
+      }
   }
