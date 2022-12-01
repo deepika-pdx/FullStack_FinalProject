@@ -80,6 +80,7 @@ function Main() {
           <FunActivities />
           <WaterTracker />
         </div>
+        <footer>Copyright</footer>
       </SplitPane>
     </div>
   ) : (
@@ -96,6 +97,13 @@ function Main() {
           <FunActivities />
           <WaterTracker />
         </SplitPane>
+        <div className="Mainfooter">
+          <footer>
+            Copyright &copy; @About: <a href="https://github.com/deepika-pdx">Deepika Velapure</a>&nbsp; &nbsp;{" "}
+            <a href="https://github.com/vidyav2">Vidya Jayashankar</a>&nbsp; &nbsp;
+            <a href="https://github.com/gaurikasar">Gauri Kasar</a>&nbsp; &nbsp;
+          </footer>
+        </div>
       </SplitPane>
     </div>
   );
