@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/RightsideBar.css";
@@ -23,7 +25,9 @@ function RightsideBar() {
       <div className="thoughtBgClass">
         <p className="thoughtClass">{simpleThought}</p>
       </div>
-      <div><NearbyEvents></NearbyEvents></div>
+      <div>
+        <NearbyEvents></NearbyEvents>
+      </div>
     </SplitPane>
   );
 }
