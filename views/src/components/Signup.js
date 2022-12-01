@@ -5,8 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../styles/signUp.css";
 
-//const { errors } = this.state;
-
 const Signup = () => {
   const [data, setData] = useState({
     firstName: "",
@@ -39,55 +37,59 @@ const Signup = () => {
   return (
     <div className="signup_container">
       <div className="signup_form_container">
-        <div className="left">
-          <h1>Welcome Back</h1>
+        <div className="right">
+          <h2 className="h2">Welcome Back</h2>
           <Link to="/login">
             <button type="button" className="green_btn">
               Sign In
             </button>
           </Link>
         </div>
-        <div className="right">
+        <div className="left">
           <form className="form_container h1" onSubmit={handleSubmit}>
-            <h1>Create Account</h1>
-            <input
+            <h2 className="h2">Create Account</h2>
+           <label id="text">First Name :  <input
               type="text"
+              id="text"
               placeholder="First Name"
               name="firstName"
               onChange={handleChange}
               value={data.firstName}
               required
               className="input"
-            />
-            <input
+            /></label>
+            <label id="text">Last Name :  <input
               type="text"
+              id="text"
               placeholder="Last Name"
               name="lastName"
               onChange={handleChange}
               value={data.lastName}
               required
               className="input"
-            />
-            <input
+            /></label>
+            <label id="email">User Email : <input
               type="email"
+              id="email"
               placeholder="Email"
               name="email"
               onChange={handleChange}
               value={data.email}
               required
               className="input"
-            />
-            <input
+            /></label>
+            <label id="password">Password :  <input
               type="password"
+              id="password"
               placeholder="Password"
               name="password"
               onChange={handleChange}
               value={data.password}
               required
               className="input"
-            />
+            /></label>
             {error && <div className="error_msg"> {error}</div>}
-            <button type="submit" className="white_btn">
+            <button type="submit" className="green_btn">
               Sign Up
             </button>
           </form>

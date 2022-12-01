@@ -16,12 +16,15 @@ const LeftsideBar = ({ sendmainstate }) => {
   const [itemText, setItemText] = useState("");
   const [listItems, setListItems] = useState([]);
   const [listItemsup, setListItemsup] = useState([]);
+  const [templistup, settemplistup] = useState([]);
 
   const [isUpdating, setIsUpdating] = useState("");
   const [isUpdatingup, setIsUpdatingup] = useState("");
+  const [showButton, setShowButton] = useState(true);
   const [updateItemText, setUpdateItemText] = useState("");
   const [updateItemTextup, setUpdateItemTextup] = useState("");
   const [startDate, setStartDate] = useState(new Date());
+  const [visitContent, setVisitContent] = useState(false);
   const [updateDate, setupdateDate] = useState("");
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
@@ -30,34 +33,24 @@ const LeftsideBar = ({ sendmainstate }) => {
   const addItem = async (e) => {
     e.preventDefault();
     try {
+      //console.log(itemText)
       if (itemText.length == 0) {
         alert("Please enter value for you task");
       } else if (startDate == null) {
         alert("Please enter date assigned to the task");
       } else {
-        let formattedDate = `${
-          startDate.getMonth() + 1
-        }/${startDate.getDate()}/${startDate.getFullYear()}`;
+        let formattedDate = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
         //this.setState({ date: formattedDate });
         console.log(formattedDate);
-        const res = await axios.post("http://localhost:3001/todos", {
-          item: itemText,
-          date: formattedDate,
-          email: user,
-        });
-
+        const res = await axios.post("http://localhost:3001/todos", { item: itemText, date: formattedDate, email: user });
         const current = new Date();
         if (current.getTime() < startDate.getTime()) {
           setListItemsup((prev) => [...prev, res.data]);
-          
         } else {
           setListItems((prev) => [...prev, res.data]);
-          
         }
         setItemText("");
-        setStartDate(new Date())
-        
-       
+        setVisitContent(true);
       }
     } catch (err) {
       console.log(err);
@@ -74,12 +67,13 @@ const LeftsideBar = ({ sendmainstate }) => {
         .then((res) => res.json())
         .then((data) => setListItemsup(data))
         .catch((err) => console.error("Error: ", err));
+      settemplistup(listItemsup);
     };
 
     getItemsList();
   }, []);
   useEffect(() => {
-    const gettodosupcoming = async () => {
+    const GetTodos = async () => {
       fetch(
         "http://localhost:3001/todos?" +
           new URLSearchParams({
@@ -90,7 +84,7 @@ const LeftsideBar = ({ sendmainstate }) => {
         .then((data) => setListItems(data))
         .catch((err) => console.error("Error: ", err));
     };
-    gettodosupcoming();
+    GetTodos();
   }, []);
   // Delete item when click on delete
   const deleteItem = async (id) => {
@@ -116,19 +110,15 @@ const LeftsideBar = ({ sendmainstate }) => {
   const updateItem = async (open) => {
     try {
       if (updateItemText.length != 0) {
-        const res = await axios.put(`http://localhost:3001/todos`, {
-          item: updateItemText,
-          id: isUpdating,
-        });
+        const res = await axios.put(`http://localhost:3001/todos`, { item: updateItemText, id: isUpdating });
         console.log(res.data);
-        const updatedItemIndex = listItems.findIndex(
-          (item) => item._id === isUpdating
-        );
+        const updatedItemIndex = listItems.findIndex((item) => item._id === isUpdating);
         const updatedItem = (listItems[updatedItemIndex].item = updateItemText);
         setUpdateItemText("");
         setIsUpdating("");
       } else {
         alert("Please enter a valid todo task");
+
         setOpen(!open);
       }
     } catch (err) {
@@ -140,9 +130,7 @@ const LeftsideBar = ({ sendmainstate }) => {
     try {
       const dateup = updateDate.toString();
       if (updateItemTextup.length != 0 && dateup.length != 0) {
-        let formattedDate = `${
-          updateDate.getMonth() + 1
-        }/${updateDate.getDate()}/${updateDate.getFullYear()}`;
+        let formattedDate = `${updateDate.getMonth() + 1}/${updateDate.getDate()}/${updateDate.getFullYear()}`;
         console.log(formattedDate);
         const res = await axios.put(`http://localhost:3001/todos`, {
           item: updateItemTextup,
@@ -150,11 +138,8 @@ const LeftsideBar = ({ sendmainstate }) => {
           date: formattedDate,
         });
         console.log(res.data);
-        const updatedItemIndex = listItemsup.findIndex(
-          (item) => item._id === isUpdatingup
-        );
-        const updatedItem = (listItemsup[updatedItemIndex].item =
-          updateItemTextup);
+        const updatedItemIndex = listItemsup.findIndex((item) => item._id === isUpdatingup);
+        const updatedItem = (listItemsup[updatedItemIndex].item = updateItemTextup);
         setUpdateItemTextup("");
         setIsUpdatingup("");
       } else if (dateup.length == 0) {
@@ -169,9 +154,7 @@ const LeftsideBar = ({ sendmainstate }) => {
     }
   };
   const completeTodo = async (id) => {
-    const data = await fetch("http://localhost:3001/todo/complete/" + id).then(
-      (res) => res.json()
-    );
+    const data = await fetch("http://localhost:3001/todo/complete/" + id).then((res) => res.json());
 
     setListItems((listItems) =>
       listItems.map((item) => {
@@ -184,9 +167,7 @@ const LeftsideBar = ({ sendmainstate }) => {
     );
   };
   const completeTodoup = async (id) => {
-    const data = await fetch("http://localhost:3001/todo/complete/" + id).then(
-      (res) => res.json()
-    );
+    const data = await fetch("http://localhost:3001/todo/complete/" + id).then((res) => res.json());
 
     setListItemsup((listItemsup) =>
       listItemsup.map((item) => {
@@ -237,7 +218,7 @@ const LeftsideBar = ({ sendmainstate }) => {
         }}
         value={updateItemTextup}
       />
-      <DatePicker
+      <DatePicker  name="Select a date"
         format="MM-dd-y"
         selected={updateDate}
         onChange={(date) => setupdateDate(date)}
@@ -272,20 +253,21 @@ const LeftsideBar = ({ sendmainstate }) => {
 
   return (
     <div className="leftside">
-      <h2>Todo List</h2>
+      <h2 className="TodoHeading">Todo List</h2>
       <form className="form" onSubmit={(e) => addItem(e)}>
-      <label for="todo-task"> Task</label>
-      <input id="todo-task" className="todo-task"
+        <label for="todo-task"> Task</label>
+        <input
           type="text"
+          id="todo-task"
           placeholder="Add Todo Item"
           onChange={(e) => {
             setItemText(e.target.value);
           }}
           value={itemText}
-        /> 
-         
-         <label for ="date-todo"> Date: </label> 
-        <DatePicker id ="date-todo"
+        />
+        <label for="date-todo"> Date: </label>
+        <DatePicker
+          id="date-todo"
           format="MM-dd-y"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -310,55 +292,56 @@ const LeftsideBar = ({ sendmainstate }) => {
             },
           ]}
         />
-    
+
         <button type="submit">Add</button>
       </form>
 
-      <div className="header">Today's Tasks</div>
+      <div className="header">Today's Task</div>
       <div className="content-body">
         <div className="todo-listItems">
           {Array.isArray(listItems) ? (
             listItems.map((item, index) => (
               <div className={index % 2 == 0 ? "bck-blue" : "bck-white"}>
-                <div
-                  className={"todo" + (item.complete ? " is-complete" : "")}
-                  key={item._id}
-                  onClick={() => completeTodo(item._id)}
-                >
-                  <div className="todo-item">
-                    {isUpdating === item._id ? (
-                      renderUpdateForm()
-                    ) : (
-                      <>
+                <div className="todo-item">
+                  {isUpdating === item._id ? (
+                    renderUpdateForm()
+                  ) : (
+                    <>
+                      <div
+                        className={"todo" + (item.complete ? " is-complete" : "")}
+                        key={item._id}
+                        onClick={() => completeTodo(item._id)}
+                      >
+                        {" "}
                         <div className="todocheckbox"></div>
-                        <div className="text">
-                          <p className="item-content">{item.item}</p>
-                        </div>
-                        <Icon
-                          className="todo-icon"
-                          name="edit"
-                          tooltip="Edit"
-                          theme="light"
-                          size="medium"
-                          onClick={() => {
-                            setIsUpdating(item._id);
-                          }}
-                        />
-                        <Icon
-                          className="todo-icon-del"
-                          name="check"
-                          tooltip="done"
-                          theme="light"
-                          size="medium"
-                          onClick={() => {
-                            deleteItem(item._id);
-                          }}
-                        />
+                      </div>
+                      
+                        <p className="text item-content">{item.item}</p>
+                      
+                      <Icon
+                        className="todo-icon"
+                        name="edit"
+                        tooltip="Edit"
+                        theme="light"
+                        size="medium"
+                        onClick={() => {
+                          setIsUpdating(item._id);
+                        }}
+                      />
+                      <Icon
+                        className="todo-icon-del"
+                        name="check"
+                        tooltip="Done"
+                        theme="light"
+                        size="medium"
+                        onClick={() => {
+                          deleteItem(item._id);
+                        }}
+                      />
 
-                        <hr className="hr-style" />
-                      </>
-                    )}
-                  </div>
+                      <hr className="hr-style" />
+                    </>
+                  )}
                 </div>
               </div>
             ))
@@ -384,48 +367,46 @@ const LeftsideBar = ({ sendmainstate }) => {
               {Array.isArray(listItemsup)
                 ? listItemsup.map((item, index) => (
                     <div className={index % 2 == 0 ? "bck-blue" : "bck-white"}>
-                      
-                        <div className="todo-item">
-                          {isUpdatingup === item._id ? (
-                            renderUpdateFormup()
-                          ) : (
-                            <>
-                              <div className="todocheckbox"></div>
-                              <div
-                        className={
-                          "todo" + (item.complete ? " is-complete" : "")
-                        }
-                        key={item._id}
-                        onClick={() => completeTodoup(item._id)}
-                      >
-                              <div className="text">
-                                <p className="item-content">{item.item}</p>
-                              </div></div>
-                              <div className="tododate">{item.date}</div>
-                              <Icon
-                                className="todo-icon"
-                                name="edit"
-                                tooltip="Edit"
-                                theme="light"
-                                size="medium"
-                                onClick={() => {
-                                  setIsUpdatingup(item._id);
-                                }}
-                              />
-                              <Icon
-                                className="todo-icon-del"
-                                name="check"
-                                tooltip="done"
-                                theme="light"
-                                size="medium"
-                                onClick={() => {
-                                  deleteItemup(item._id);
-                                }}
-                              />
-                            </>
-                          )}
-                        </div>
-                      
+                      <div className="todo-item">
+                        {isUpdatingup === item._id ? (
+                          renderUpdateFormup()
+                        ) : (
+                          <>
+                            <div
+                              className={"todo" + (item.complete ? " is-complete" : "")}
+                              key={item._id}
+                              onClick={() => completeTodoup(item._id)}
+                            >
+                              {" "}
+                              <div className="todocheckbox"></div></div>
+                              
+                              <p className="text item-content">{item.item}</p>
+                            
+
+                            <div className="tododate">{item.date}</div>
+                            <Icon
+                              className="todo-icon"
+                              name="edit"
+                              tooltip="Edit"
+                              theme="light"
+                              size="medium"
+                              onClick={() => {
+                                setIsUpdatingup(item._id);
+                              }}
+                            />
+                            <Icon
+                              className="todo-icon-del"
+                              name="check"
+                              tooltip="Done"
+                              theme="light"
+                              size="medium"
+                              onClick={() => {
+                                deleteItemup(item._id);
+                              }}
+                            />
+                          </>
+                        )}
+                      </div>
                     </div>
                   ))
                 : null}
