@@ -1,13 +1,14 @@
 /** @format */
 
-import "../styles/Main.css";
 import axios from "axios";
 import { useEffect } from "react";
 import { SplitPane } from "react-multi-split-pane";
+import "../styles/Main.css";
 import TopBar from "./TopBar";
 import LeftsideBar from "./LeftsideBar";
 import EventBar from "./NewsBar";
 import RightsideBar from "./RightsideBar";
+import NearbyEvents from "./NearbyEvents";
 import Exercise from "./Exercise";
 import FunActivities from "./FunActivities";
 import WaterTracker from "./WaterTracker";
@@ -15,6 +16,9 @@ import full_glass_icon from "../images/WaterTracker/full_glass_icon.svg";
 import leg_exercise_1 from "../images/Exercise/leg_exercise_1.gif";
 
 function Main() {
+  const deviceWidth = window.innerWidth;
+  const mobileMaxWidth = 768;
+
   const resetWaterTracker = async (currTimeObj) => {
     const resetResult = await axios.post("http://localhost:3001/resetWaterGlassCount", currTimeObj);
     if (resetResult === null && resetResult.status !== 200) {
@@ -29,8 +33,8 @@ function Main() {
       resetWaterTracker(timeObj);
     }
 
-    const waterTimeInterval = 60000 * 60;
-    const exerciseTimeInterval = 60000 * 60 * 1.5;
+    const waterTimeInterval = 60000 * 9;
+    const exerciseTimeInterval = 60000 * 10;
     const waterReminderText = "Hey there!! Please drink enough water!";
     const exerciseReminderText = "Hey there!! Try some relaxing exercises!";
 
@@ -50,7 +54,7 @@ function Main() {
     }, waterTimeInterval);
 
     const exerciseInterval = setInterval(() => {
-      console.log("In exercisenotification");
+      console.log("In exercise notification");
       const exerciseOptions = {
         body: exerciseReminderText,
         icon: leg_exercise_1,
@@ -64,20 +68,42 @@ function Main() {
     };
   }, []);
 
-  return (
-    <div className="App">
+  return deviceWidth < mobileMaxWidth ? (
+    <div className="Main">
       <SplitPane split="horizontal" defaultSizes={[150, 450, 250]} primary="second">
         <TopBar />
-        <SplitPane split="vertical" defaultSizes={[150, 230, 150]} className="splitPaneClass">
+        <LeftsideBar />
+        <div className="sideActivities">
+          <EventBar />
+          <NearbyEvents />
+          <Exercise />
+          <FunActivities />
+          <WaterTracker />
+        </div>
+        <footer>Copyright</footer>
+      </SplitPane>
+    </div>
+  ) : (
+    <div className="Main">
+      <SplitPane split="horizontal" defaultSizes={[150, 450, 250]} primary="second">
+        <TopBar />
+        <SplitPane split="vertical" defaultSizes={[155, 230, 150]} className="splitPaneClass">
           <EventBar />
           <LeftsideBar />
           <RightsideBar />
         </SplitPane>
-        <SplitPane split="vertical" className="splitPaneClass" defaultSizes={[150, 230, 150]}>
+        <SplitPane split="vertical" className="splitPaneClass" defaultSizes={[155, 230, 150]}>
           <Exercise />
           <FunActivities />
           <WaterTracker />
         </SplitPane>
+        <div className="Mainfooter">
+          <footer>
+            Copyright &copy; @About: <a href="https://github.com/deepika-pdx">Deepika Velapure</a>&nbsp; &nbsp;{" "}
+            <a href="https://github.com/vidyav2">Vidya Jayashankar</a>&nbsp; &nbsp;
+            <a href="https://github.com/gaurikasar">Gauri Kasar</a>&nbsp; &nbsp;
+          </footer>
+        </div>
       </SplitPane>
     </div>
   );

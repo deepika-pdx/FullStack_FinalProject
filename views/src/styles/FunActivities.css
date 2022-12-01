@@ -23,3 +23,9 @@
   margin: 1em;
   margin-top: -1em;
 }
+
+@media (min-width: 414px) and (max-width: 767px) {
+  .activitiesBlockClass {
+    margin-left: 0;
+  }
+}

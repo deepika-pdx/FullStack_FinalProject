@@ -32,6 +32,9 @@ function Exercise() {
 
   return (
     <div className="mainExerciseClass">
+      <div className="exerciseHeading">
+        <h3>Exercises</h3>
+      </div>
       <div className="exerciseImageClass">
         <div className="exerciseChangeClass">
           <button onClick={handlePreviousExercise} className="exercisePrevButtonClass">
