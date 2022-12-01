@@ -219,6 +219,7 @@ const LeftsideBar = ({ sendmainstate }) => {
         value={updateItemTextup}
       />
       <DatePicker
+        name="Select a date"
         format="MM-dd-y"
         selected={updateDate}
         onChange={(date) => setupdateDate(date)}
@@ -315,9 +316,9 @@ const LeftsideBar = ({ sendmainstate }) => {
                         {" "}
                         <div className="todocheckbox"></div>
                       </div>
-                      <div className="text">
-                        <p className="item-content">{item.item}</p>
-                      </div>
+
+                      <p className="text item-content">{item.item}</p>
+
                       <Icon
                         className="todo-icon"
                         name="edit"
@@ -379,9 +380,9 @@ const LeftsideBar = ({ sendmainstate }) => {
                             >
                               {" "}
                               <div className="todocheckbox"></div>
-                              <div className="text"></div>
-                              <p className="item-content">{item.item}</p>
                             </div>
+
+                            <p className="text item-content">{item.item}</p>
 
                             <div className="tododate">{item.date}</div>
                             <Icon

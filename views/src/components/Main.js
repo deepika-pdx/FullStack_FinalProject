@@ -33,8 +33,8 @@ function Main() {
       resetWaterTracker(timeObj);
     }
 
-    const waterTimeInterval = 60000 * 4;
-    const exerciseTimeInterval = 60000 * 4.5;
+    const waterTimeInterval = 60000 * 60;
+    const exerciseTimeInterval = 60000 * 60 * 2;
     const waterReminderText = "Hey there!! Please drink enough water!";
     const exerciseReminderText = "Hey there!! Try some relaxing exercises!";
 
