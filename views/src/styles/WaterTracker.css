@@ -51,3 +51,20 @@
   height: 2em;
   background-color: blanchedalmond;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .waterTrackerClass {
+    width: fit-content;
+    background-color: floralwhite;
+    overflow-x: scroll;
+  }
+
+  .waterClass {
+    /* margin: 1em; */
+    display: flex;
+    justify-content: flex-start;
+    font-size: large;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+
+}

@@ -66,20 +66,13 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 3000px) {
 
   .mainExerciseClass {
-    width: 50%;
+    width: 100%;
     background-color: floralwhite;
+    overflow-x: scroll;
   }
 
-  .exercisePrevButtonClass {
-    background-color: #f4976C;
-    border-radius: 1em;
-    margin-right: 10em;
-    margin-top: -1em;
-    width: 5em;
-    margin-left: -1.5em;
-  }
 
 }
