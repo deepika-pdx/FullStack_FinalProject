@@ -1,4 +1,5 @@
 /** @format */
+
 .leftside {
   display: flex;
   flex-direction: column;
@@ -228,9 +229,6 @@
 .todo.is-complete .text {
   text-decoration: line-through;
 }
-.todo {
-  width: 100%;
-}
 .text {
   width: 100%;
   margin-left: 0.5em;
@@ -347,10 +345,11 @@
   }
   .popup-content {
     margin: auto;
-    background: rgb(255, 255, 255);
+    background: none;
     width: 50%;
     padding: 5px;
     height: fit-content;
+    border: 0;
   }
   .scrollable {
     width: 100%;
@@ -427,10 +426,9 @@
     cursor: pointer;
     position: absolute;
     display: block;
-    padding: 2px 5px;
     line-height: 20px;
-    right: -10px;
-    top: -10px;
+    margin-top: -2em;
+    right: -2em;
     font-size: 24px;
     background: #ffffff;
     border-radius: 18px;
@@ -466,25 +464,21 @@
   .todo.is-complete .text {
     text-decoration: line-through;
   }
-  .todo {
-    width: 100%;
-  }
   .text {
     width: 100%;
     margin-left: 0.5em;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f4976c;
-    width: 92%;
-    padding: 10px;
-    border-radius: 8px;
-    overflow-y: scroll;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
-
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .App {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f4976c;
+      width: 92%;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-y: scroll;
+    }
+  }
 }

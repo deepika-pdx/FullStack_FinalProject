@@ -33,8 +33,8 @@ function Main() {
       resetWaterTracker(timeObj);
     }
 
-    const waterTimeInterval = 60000 * 9;
-    const exerciseTimeInterval = 60000 * 10;
+    const waterTimeInterval = 60000 * 60;
+    const exerciseTimeInterval = 60000 * 60 * 2;
     const waterReminderText = "Hey there!! Please drink enough water!";
     const exerciseReminderText = "Hey there!! Try some relaxing exercises!";
 
@@ -80,7 +80,13 @@ function Main() {
           <FunActivities />
           <WaterTracker />
         </div>
-        <footer>Copyright</footer>
+        <div className="Mainfooter">
+          <footer>
+            Copyright &copy; @About: <a href="https://github.com/deepika-pdx">Deepika Velapure</a>&nbsp; &nbsp;{" "}
+            <a href="https://github.com/vidyav2">Vidya Jayashankar</a>&nbsp; &nbsp;
+            <a href="https://github.com/gaurikasar">Gauri Kasar</a>&nbsp; &nbsp;
+          </footer>
+        </div>
       </SplitPane>
     </div>
   ) : (
