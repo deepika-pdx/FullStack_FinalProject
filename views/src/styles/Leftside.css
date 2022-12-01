@@ -288,3 +288,17 @@ height: 7px;
     margin-left: 0.5em;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4976c;
+    width: 92%;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-y: scroll;
+  }
+
+}
