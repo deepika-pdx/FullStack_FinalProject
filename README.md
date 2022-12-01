@@ -5,10 +5,10 @@ This app will be like the first thing one would like to open on their laptops/de
 
 # Follow below steps for using the application:
 
-1. In the terminal execute 'npm run build' in the main project folder 'FullStack_FinalProject'
+1. In the terminal execute 'npm install' in the main project folder 'FullStack_FinalProject'
 2. Upon successful build execute 'npm start'
 3. Open a new terminal and change directory 'cd views'
-4. In this new terminal execute 'npm run build' again
+4. In this new terminal execute 'npm install' again
 5. Upon successful build execute 'npm start'
 
 The application will be up and running at 'http://localhost:3000"
