@@ -117,7 +117,7 @@ const LeftsideBar = ({ sendmainstate }) => {
         setUpdateItemText("");
         setIsUpdating("");
       } else {
-        alert("Please enter a valid date");
+        alert("Please enter a valid todo task");
 
         setOpen(!open);
       }
@@ -255,15 +255,19 @@ const LeftsideBar = ({ sendmainstate }) => {
     <div className="leftside">
       <h2 className="TodoHeading">Todo List</h2>
       <form className="form" onSubmit={(e) => addItem(e)}>
+        <label for="todo-task"> Task</label>
         <input
           type="text"
+          id="todo-task"
           placeholder="Add Todo Item"
           onChange={(e) => {
             setItemText(e.target.value);
           }}
           value={itemText}
         />
+        <label for="date-todo"> Date: </label>
         <DatePicker
+          id="date-todo"
           format="MM-dd-y"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -298,45 +302,46 @@ const LeftsideBar = ({ sendmainstate }) => {
           {Array.isArray(listItems) ? (
             listItems.map((item, index) => (
               <div className={index % 2 == 0 ? "bck-blue" : "bck-white"}>
-                <div
-                  className={"todo" + (item.complete ? " is-complete" : "")}
-                  key={item._id}
-                  onClick={() => completeTodo(item._id)}
-                >
-                  <div className="todo-item">
-                    {isUpdating === item._id ? (
-                      renderUpdateForm()
-                    ) : (
-                      <>
+                <div className="todo-item">
+                  {isUpdating === item._id ? (
+                    renderUpdateForm()
+                  ) : (
+                    <>
+                      <div
+                        className={"todo" + (item.complete ? " is-complete" : "")}
+                        key={item._id}
+                        onClick={() => completeTodo(item._id)}
+                      >
+                        {" "}
                         <div className="todocheckbox"></div>
-                        <div className="text">
-                          <p className="item-content">{item.item}</p>
-                        </div>
-                        <Icon
-                          className="todo-icon"
-                          name="edit"
-                          tooltip="Edit"
-                          theme="light"
-                          size="medium"
-                          onClick={() => {
-                            setIsUpdating(item._id);
-                          }}
-                        />
-                        <Icon
-                          className="todo-icon-del"
-                          name="check"
-                          tooltip="Check"
-                          theme="light"
-                          size="medium"
-                          onClick={() => {
-                            deleteItem(item._id);
-                          }}
-                        />
+                      </div>
+                      <div className="text">
+                        <p className="item-content">{item.item}</p>
+                      </div>
+                      <Icon
+                        className="todo-icon"
+                        name="edit"
+                        tooltip="Edit"
+                        theme="light"
+                        size="medium"
+                        onClick={() => {
+                          setIsUpdating(item._id);
+                        }}
+                      />
+                      <Icon
+                        className="todo-icon-del"
+                        name="check"
+                        tooltip="Done"
+                        theme="light"
+                        size="medium"
+                        onClick={() => {
+                          deleteItem(item._id);
+                        }}
+                      />
 
-                        <hr className="hr-style" />
-                      </>
-                    )}
-                  </div>
+                      <hr className="hr-style" />
+                    </>
+                  )}
                 </div>
               </div>
             ))
@@ -362,44 +367,45 @@ const LeftsideBar = ({ sendmainstate }) => {
               {Array.isArray(listItemsup)
                 ? listItemsup.map((item, index) => (
                     <div className={index % 2 == 0 ? "bck-blue" : "bck-white"}>
-                      <div
-                        className={"todo" + (item.complete ? " is-complete" : "")}
-                        key={item._id}
-                        onClick={() => completeTodoup(item._id)}
-                      >
-                        <div className="todo-item">
-                          {isUpdatingup === item._id ? (
-                            renderUpdateFormup()
-                          ) : (
-                            <>
+                      <div className="todo-item">
+                        {isUpdatingup === item._id ? (
+                          renderUpdateFormup()
+                        ) : (
+                          <>
+                            <div
+                              className={"todo" + (item.complete ? " is-complete" : "")}
+                              key={item._id}
+                              onClick={() => completeTodoup(item._id)}
+                            >
+                              {" "}
                               <div className="todocheckbox"></div>
-                              <div className="text">
-                                <p className="item-content">{item.item}</p>
-                              </div>
-                              <div className="tododate">{item.date}</div>
-                              <Icon
-                                className="todo-icon"
-                                name="edit"
-                                tooltip="Edit"
-                                theme="light"
-                                size="medium"
-                                onClick={() => {
-                                  setIsUpdatingup(item._id);
-                                }}
-                              />
-                              <Icon
-                                className="todo-icon-del"
-                                name="check"
-                                tooltip="check"
-                                theme="light"
-                                size="medium"
-                                onClick={() => {
-                                  deleteItemup(item._id);
-                                }}
-                              />
-                            </>
-                          )}
-                        </div>
+                              <div className="text"></div>
+                              <p className="item-content">{item.item}</p>
+                            </div>
+
+                            <div className="tododate">{item.date}</div>
+                            <Icon
+                              className="todo-icon"
+                              name="edit"
+                              tooltip="Edit"
+                              theme="light"
+                              size="medium"
+                              onClick={() => {
+                                setIsUpdatingup(item._id);
+                              }}
+                            />
+                            <Icon
+                              className="todo-icon-del"
+                              name="check"
+                              tooltip="Done"
+                              theme="light"
+                              size="medium"
+                              onClick={() => {
+                                deleteItemup(item._id);
+                              }}
+                            />
+                          </>
+                        )}
                       </div>
                     </div>
                   ))

@@ -25,9 +25,7 @@ function RightsideBar() {
       <div className="thoughtBgClass">
         <p className="thoughtClass">{simpleThought}</p>
       </div>
-      <div>
-        <NearbyEvents></NearbyEvents>
-      </div>
+      <NearbyEvents></NearbyEvents>
     </SplitPane>
   );
 }
