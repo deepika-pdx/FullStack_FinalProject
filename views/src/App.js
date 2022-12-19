@@ -1,25 +1,22 @@
 /** @format */
-import "./App.css";
-import { SplitPane } from "react-multi-split-pane";
-import TopBar from "./components/TopBar";
-import BottomBar from "./components/BottomBar";
-import LeftsideBar from "./components/LeftsideBar";
-import Content from "./components/Content";
-import RightsideBar from "./components/RightsideBar";
+
+import React, { useEffect, useState } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import Main from "./components/Main";
 
 function App() {
+  const user = localStorage.getItem("token");
+
   return (
-    <div className="App">
-      <SplitPane split="horizontal" minSize={50}>
-        <TopBar />
-        <SplitPane split="vertical">
-          <LeftsideBar />
-          <Content />
-          <RightsideBar />
-        </SplitPane>
-        <BottomBar />
-      </SplitPane>
-    </div>
+    <React.Fragment>
+      <Routes>
+        <Route exact path="/" element={user ? <Main user={user} /> : <Navigate to="/login" />} />
+        <Route exact path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
+      </Routes>
+    </React.Fragment>
   );
 }
 
