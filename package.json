@@ -20,6 +20,26 @@
   "dependencies": {
     "express": "^4.18.2",
     "mongodb": "^4.11.0",
+<<<<<<< Updated upstream
     "mongoose": "^6.7.2"
+=======
+    "mongoose": "^6.7.2",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "node-localstorage": "^2.2.1",
+    "nodemon": "^2.0.20",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^3.1.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
+>>>>>>> Stashed changes
   }
 }
