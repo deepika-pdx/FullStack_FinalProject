@@ -41,6 +41,7 @@ module.exports = {
       constants: false,
       "mock-aws-s3": false,
       async_hooks: false,
+      "@mapbox/node-pre-gyp": false,
     },
   },
 };
