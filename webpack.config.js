@@ -22,4 +22,25 @@ module.exports = {
   // on the final bundle. For now, we don't need production's JavaScript
   // minifying and other things, so let's set mode to development
   mode: "development",
+  resolve: {
+    fallback: {
+      path: false,
+      buffer: false,
+      crypto: false,
+      zlib: false,
+      stream: false,
+      https: false,
+      http: false,
+      fs: false,
+      child_process: false,
+      net: false,
+      tls: false,
+      dns: false,
+      nock: false,
+      "aws-sdk": false,
+      constants: false,
+      "mock-aws-s3": false,
+      async_hooks: false,
+    },
+  },
 };
