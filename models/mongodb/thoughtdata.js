@@ -1,6 +1,6 @@
 /** @format */
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const thoughtSchema = new mongoose.Schema({
   thought: {
@@ -13,6 +13,6 @@ const thoughtSchema = new mongoose.Schema({
   },
 });
 
-const ThoughtData = mongoose.model("ThoughtData", thoughtSchema);
+const ThoughtData = mongoose.model('ThoughtData', thoughtSchema);
 
 module.exports = { ThoughtData };
