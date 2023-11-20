@@ -1,11 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import {
-	BrowserRouter as Router,
-	Route,
-	Link,
-} from "react-router-dom";
-import Signup from "./Signup";
+import { Link } from "react-router-dom";
 import Main from "./Main";
 
 function Login() {
@@ -34,12 +29,6 @@ function Login() {
         setError(error.response.data.message);
       }
     }
-  };
-
-  const handleSignUp = () => {
-    <Router>
-      <Route exact path="/" component={Signup} />
-    </Router>;
   };
 
   return (

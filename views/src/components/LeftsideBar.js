@@ -7,24 +7,19 @@ import DatePicker from "react-datepicker";
 import axios from "axios";
 import "reactjs-popup/dist/index.css";
 import Popup from "reactjs-popup";
-import { useNavigate } from "react-router-dom";
 import Icon from "react-crud-icons";
 import "../styles/Leftside.css";
-import { date } from "joi";
 
 const LeftsideBar = ({ sendmainstate }) => {
   const [itemText, setItemText] = useState("");
   const [listItems, setListItems] = useState([]);
   const [listItemsup, setListItemsup] = useState([]);
-  const [templistup, settemplistup] = useState([]);
 
   const [isUpdating, setIsUpdating] = useState("");
   const [isUpdatingup, setIsUpdatingup] = useState("");
-  const [showButton, setShowButton] = useState(true);
   const [updateItemText, setUpdateItemText] = useState("");
   const [updateItemTextup, setUpdateItemTextup] = useState("");
   const [startDate, setStartDate] = useState(new Date());
-  const [visitContent, setVisitContent] = useState(false);
   const [updateDate, setupdateDate] = useState("");
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
@@ -34,8 +29,8 @@ const LeftsideBar = ({ sendmainstate }) => {
     e.preventDefault();
     try {
       //console.log(itemText)
-      if (itemText.length == 0) {
-        alert("Please enter value for you task");
+      if (itemText.length === 0) {
+        alert("Please enter value for your task");
       } else if (startDate == null) {
         alert("Please enter date assigned to the task");
       } else {
@@ -50,7 +45,6 @@ const LeftsideBar = ({ sendmainstate }) => {
           setListItems((prev) => [...prev, res.data]);
         }
         setItemText("");
-        setVisitContent(true);
       }
     } catch (err) {
       console.log(err);
@@ -67,11 +61,10 @@ const LeftsideBar = ({ sendmainstate }) => {
         .then((res) => res.json())
         .then((data) => setListItemsup(data))
         .catch((err) => console.error("Error: ", err));
-      settemplistup(listItemsup);
     };
 
     getItemsList();
-  }, []);
+  }, [user]);
   useEffect(() => {
     const GetTodos = async () => {
       fetch(
@@ -85,11 +78,11 @@ const LeftsideBar = ({ sendmainstate }) => {
         .catch((err) => console.error("Error: ", err));
     };
     GetTodos();
-  }, []);
+  }, [user]);
   // Delete item when click on delete
   const deleteItem = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:3001/todos/${id}`);
+      await axios.delete(`http://localhost:3001/todos/${id}`);
       const newListItems = listItems.filter((item) => item._id !== id);
       setListItems(newListItems);
     } catch (err) {
@@ -98,7 +91,7 @@ const LeftsideBar = ({ sendmainstate }) => {
   };
   const deleteItemup = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:3001/todos/${id}`);
+      await axios.delete(`http://localhost:3001/todos/${id}`);
       const newListItems = listItemsup.filter((item) => item._id !== id);
       setListItemsup(newListItems);
     } catch (err) {
@@ -109,11 +102,11 @@ const LeftsideBar = ({ sendmainstate }) => {
   //Update item
   const updateItem = async (open) => {
     try {
-      if (updateItemText.length != 0) {
+      if (updateItemText.length !== 0) {
         const res = await axios.put(`http://localhost:3001/todos`, { item: updateItemText, id: isUpdating });
         console.log(res.data);
         const updatedItemIndex = listItems.findIndex((item) => item._id === isUpdating);
-        const updatedItem = (listItems[updatedItemIndex].item = updateItemText);
+        (listItems[updatedItemIndex].item = updateItemText);
         setUpdateItemText("");
         setIsUpdating("");
       } else {
@@ -129,7 +122,7 @@ const LeftsideBar = ({ sendmainstate }) => {
     //e.preventDefault();
     try {
       const dateup = updateDate.toString();
-      if (updateItemTextup.length != 0 && dateup.length != 0) {
+      if (updateItemTextup.length !== 0 && dateup.length !== 0) {
         let formattedDate = `${updateDate.getMonth() + 1}/${updateDate.getDate()}/${updateDate.getFullYear()}`;
         console.log(formattedDate);
         const res = await axios.put(`http://localhost:3001/todos`, {
@@ -139,13 +132,13 @@ const LeftsideBar = ({ sendmainstate }) => {
         });
         console.log(res.data);
         const updatedItemIndex = listItemsup.findIndex((item) => item._id === isUpdatingup);
-        const updatedItem = (listItemsup[updatedItemIndex].item = updateItemTextup);
+        (listItemsup[updatedItemIndex].item = updateItemTextup);
         setUpdateItemTextup("");
         setIsUpdatingup("");
-      } else if (dateup.length == 0) {
+      } else if (dateup.length === 0) {
         alert("Please enter valid date for update");
         setOpen(!open);
-      } else if (updateItemTextup.length != 0) {
+      } else if (updateItemTextup.length !== 0) {
         alert("Please enter some value in the todo if you want to edit");
         setOpen(!open);
       }
@@ -302,7 +295,7 @@ const LeftsideBar = ({ sendmainstate }) => {
         <div className="todo-listItems">
           {Array.isArray(listItems) ? (
             listItems.map((item, index) => (
-              <div className={index % 2 == 0 ? "bck-blue" : "bck-white"}>
+              <div className={index % 2 === 0 ? "bck-blue" : "bck-white"}>
                 <div className="todo-item">
                   {isUpdating === item._id ? (
                     renderUpdateForm()
@@ -359,15 +352,15 @@ const LeftsideBar = ({ sendmainstate }) => {
       </div>
       <Popup open={open} closeOnDocumentClick onClose={closeModal} modal nested>
         <div className="modal">
-          <a className="close" onClick={closeModal}>
+          <button className="close" onClick={closeModal}>
             &times;
-          </a>
+          </button>
 
           <div className="content">
             <div className="todo-listItems">
               {Array.isArray(listItemsup)
                 ? listItemsup.map((item, index) => (
-                    <div className={index % 2 == 0 ? "bck-blue" : "bck-white"}>
+                    <div className={index % 2 === 0 ? "bck-blue" : "bck-white"}>
                       <div className="todo-item">
                         {isUpdatingup === item._id ? (
                           renderUpdateFormup()
