@@ -12,8 +12,8 @@ import NearbyEvents from "./NearbyEvents";
 import Exercise from "./Exercise";
 import FunActivities from "./FunActivities";
 import WaterTracker from "./WaterTracker";
-import full_glass_icon from "../images/WaterTracker/full_glass_icon.svg";
-import leg_exercise_1 from "../images/Exercise/leg_exercise_1.gif";
+import fullGlassIcon from "../images/WaterTracker/full_glass_icon.svg";
+import legExercise1 from "../images/Exercise/leg_exercise_1.gif";
 
 function Main() {
   const deviceWidth = window.innerWidth;
@@ -48,7 +48,7 @@ function Main() {
       console.log("In water notification");
       const waterOptions = {
         body: waterReminderText,
-        icon: full_glass_icon,
+        icon: fullGlassIcon,
       };
       new Notification("Water Reminder", waterOptions);
     }, waterTimeInterval);
@@ -57,7 +57,7 @@ function Main() {
       console.log("In exercise notification");
       const exerciseOptions = {
         body: exerciseReminderText,
-        icon: leg_exercise_1,
+        icon: legExercise1,
       };
       new Notification("Exercise Reminder", exerciseOptions);
     }, exerciseTimeInterval);

@@ -10,7 +10,7 @@ import Popup from "reactjs-popup";
 import Icon from "react-crud-icons";
 import "../styles/Leftside.css";
 
-const LeftsideBar = ({ sendmainstate }) => {
+const LeftsideBar = () => {
   const [itemText, setItemText] = useState("");
   const [listItems, setListItems] = useState([]);
   const [listItemsup, setListItemsup] = useState([]);
@@ -28,14 +28,12 @@ const LeftsideBar = ({ sendmainstate }) => {
   const addItem = async (e) => {
     e.preventDefault();
     try {
-      //console.log(itemText)
       if (itemText.length === 0) {
         alert("Please enter value for your task");
       } else if (startDate == null) {
         alert("Please enter date assigned to the task");
       } else {
         let formattedDate = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
-        //this.setState({ date: formattedDate });
         console.log(formattedDate);
         const res = await axios.post("http://localhost:3001/todos", { item: itemText, date: formattedDate, email: user });
         const current = new Date();
@@ -66,7 +64,7 @@ const LeftsideBar = ({ sendmainstate }) => {
     getItemsList();
   }, [user]);
   useEffect(() => {
-    const GetTodos = async () => {
+    const getTodos = async () => {
       fetch(
         "http://localhost:3001/todos?" +
           new URLSearchParams({
@@ -77,7 +75,7 @@ const LeftsideBar = ({ sendmainstate }) => {
         .then((data) => setListItems(data))
         .catch((err) => console.error("Error: ", err));
     };
-    GetTodos();
+    getTodos();
   }, [user]);
   // Delete item when click on delete
   const deleteItem = async (id) => {
@@ -119,7 +117,6 @@ const LeftsideBar = ({ sendmainstate }) => {
     }
   };
   const updateItemup = async (open) => {
-    //e.preventDefault();
     try {
       const dateup = updateDate.toString();
       if (updateItemTextup.length !== 0 && dateup.length !== 0) {

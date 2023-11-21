@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import water_image from "../images/WaterTracker/water_icon.png";
-import empty_glass_icon from "../images/WaterTracker/empty_glass_icon.svg";
-import full_glass_icon from "../images/WaterTracker/full_glass_icon.svg";
+import waterImage from "../images/WaterTracker/water_icon.png";
+import emptyGlassIcon from "../images/WaterTracker/empty_glass_icon.svg";
+import fullGlassIcon from "../images/WaterTracker/full_glass_icon.svg";
 import "../styles/WaterTracker.css";
 import Popup from "reactjs-popup";
 
@@ -83,16 +83,16 @@ function WaterTracker() {
       <div className="waterTrackerHeading">
         <h3>
           Water Tracker&nbsp;&nbsp;
-          <img src={water_image} alt="water icon" width="30" height="30"></img>
+          <img src={waterImage} alt="water icon" width="30" height="30"></img>
         </h3>
       </div>
       <div className="waterClass">
         Did you drink enough water today?&nbsp;&nbsp;
         {fullGlassArray.map((j) => {
-          return <img key={j} src={full_glass_icon} alt="full glass icon" width="30" height="30"></img>;
+          return <img key={j} src={fullGlassIcon} alt="full glass icon" width="30" height="30"></img>;
         })}
         {emptyGlassArray.map((k) => {
-          return <img key={k} src={empty_glass_icon} alt="empty glass icon" width="30" height="30"></img>;
+          return <img key={k} src={emptyGlassIcon} alt="empty glass icon" width="30" height="30"></img>;
         })}
       </div>
       <div className="waterButtonAndPopup">

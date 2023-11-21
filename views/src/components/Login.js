@@ -12,8 +12,6 @@ function Login() {
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
     localStorage.setItem("email", data.email);
-    //localStorage.setItem("firstName", data.firstName);
-    //console.log(data);
   };
 
   const handleSubmit = async (e) => {
@@ -22,7 +20,6 @@ function Login() {
       const url = "http://localhost:3001/auth";
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.data);
-      //localStorage.setItem("token", res.data);
       setVisitMain(true);
     } catch (error) {
       if (error.response && error.response.status >= 400 && error.response.status <= 500) {
