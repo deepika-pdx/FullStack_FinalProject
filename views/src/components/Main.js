@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { SplitPane } from "react-multi-split-pane";
 import "../styles/Main.css";
 import TopBar from "./TopBar";
-import LeftsideBar from "./LeftsideBar";
+import TodoItems from "./TodoItems";
 import EventBar from "./NewsBar";
 import RightsideBar from "./RightsideBar";
 import NearbyEvents from "./NearbyEvents";
@@ -72,7 +72,7 @@ function Main() {
     <div className="Main">
       <SplitPane split="horizontal" defaultSizes={[150, 450, 250]} primary="second">
         <TopBar />
-        <LeftsideBar />
+        <TodoItems />
         <div className="sideActivities">
           <EventBar />
           <NearbyEvents />
@@ -95,7 +95,7 @@ function Main() {
         <TopBar />
         <SplitPane split="vertical" defaultSizes={[155, 230, 150]} className="splitPaneClass">
           <EventBar />
-          <LeftsideBar />
+          <TodoItems />
           <RightsideBar />
         </SplitPane>
         <SplitPane split="vertical" className="splitPaneClass" defaultSizes={[155, 230, 150]}>
