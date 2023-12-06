@@ -54,6 +54,9 @@
   transition: 0.5s;
   cursor: pointer;
 }
+.todo-no-tasks {
+  text-align: center;
+}
 .todo-tem:hover {
   opacity: 0.8;
   background-color: yellow;
