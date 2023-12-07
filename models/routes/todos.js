@@ -1,10 +1,8 @@
 /** @format */
 
-const { localStorage } = require('node-localstorage');
 const router = require('express').Router();
 //import todo model
 const todoItemsModel = require('../mongodb/todoTaks');
-const bodyParser = require('body-parser');
 
 //create first route --add Todo Item to database
 router.post('/todos', async (req, res) => {
@@ -34,7 +32,6 @@ router.get('/todos', async (req, res) => {
     let year = date_ob.getFullYear();
     let current_date = month + '/' + date + '/' + year;
     console.log('EMAIL' + req.query.email);
-    //console.log("EMAIL"+localStorage.getItem('email'))
     const allTodoItems = await todoItemsModel.find({
       $and: [{ email: req.query.email, date: current_date }],
     });
@@ -47,6 +44,7 @@ router.get('/todos', async (req, res) => {
     res.json(err);
   }
 });
+
 router.get('/todostomorrow', async (req, res) => {
   try {
     let ts = Date.now();
