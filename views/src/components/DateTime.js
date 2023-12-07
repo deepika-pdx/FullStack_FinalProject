@@ -1,26 +1,30 @@
-import  React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import '../styles/TopBar.css';
 
 export const DateTime = () => {
-
-    var [date , setDate] = useState(new Date());
-    
+  var [date, setDate] = useState(new Date());
+  try {
     useEffect(() => {
-        var timer = setInterval(() => setDate(new Date()), 1000 )
-        return function cleanup() {
-            clearInterval(timer)
-        }
-    
+      var timer = setInterval(() => setDate(new Date()), 1000);
+      return function cleanup() {
+        clearInterval(timer);
+      };
     });
-
-    return(
-        <div className="body">
-            <div className="time">
-                <p><b>Today's Date : {date.toLocaleDateString()}</b></p>
-                <p><b>Current Time : {date.toLocaleTimeString()}</b></p>
-            </div> 
-            </div>  
-    );
-}
+  } catch (err) {
+    console.log(`Error in DateTime\n ${err}`);
+  }
+  return (
+    <div className="body">
+      <div className="time">
+        <p>
+          <b>Today's Date : {date.toLocaleDateString()}</b>
+        </p>
+        <p>
+          <b>Current Time : {date.toLocaleTimeString()}</b>
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export default DateTime;

@@ -1,24 +1,28 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "../styles/RightsideBar.css";
-import NearbyEvents from "./NearbyEvents";
-import { SplitPane } from "react-multi-split-pane";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../styles/RightsideBar.css';
+import NearbyEvents from './NearbyEvents';
+import { SplitPane } from 'react-multi-split-pane';
 
 function RightsideBar() {
-  const [simpleThought, setSimpleThought] = useState("");
+  try {
+    const [simpleThought, setSimpleThought] = useState('');
 
-  const fetchThoughtData = async () => {
-    const thoughtResult = await axios.get("/thoughts");
-    const thoughtId = Math.floor(Math.random() * 10);
-    setSimpleThought(thoughtResult.data[thoughtId].thought);
-  };
+    const fetchThoughtData = async () => {
+      const thoughtResult = await axios.get('/thoughts');
+      const thoughtId = Math.floor(Math.random() * 10);
+      setSimpleThought(thoughtResult.data[thoughtId].thought);
+    };
 
-  useEffect(() => {
-    // Fetch thoughts from DailyDiaryDatabase
-    fetchThoughtData();
-  }, []);
+    useEffect(() => {
+      // Fetch thoughts from DailyDiaryDatabase
+      fetchThoughtData();
+    }, []);
+  } catch (err) {
+    console.log(`Error in RightsideBar\n${err}`);
+  }
 
   return (
     <SplitPane split="horizontal" defaultSizes={[150, 330]}>
