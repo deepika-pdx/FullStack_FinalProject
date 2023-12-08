@@ -1,7 +1,7 @@
-// Component for adding a new to-do item
-import { useState } from 'react';
-import axios from 'axios';
-import DatePicker from 'react-datepicker';
+import React from 'react';
+import { useState } from "react";
+import axios from "axios";
+import DatePicker from "react-datepicker";
 
 const AddToDoItem = (props) => {
   const [itemText, setItemText] = useState('');
