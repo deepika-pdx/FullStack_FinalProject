@@ -27,14 +27,10 @@ function Exercise() {
   }
 
   function handleNextExercise() {
-    try {
-      if (index === 7) {
-        setIndex(0);
-      } else {
-        setIndex(index + 1);
-      }
-    } catch (err) {
-      console.log(err);
+    if (index === 7) {
+      setIndex(0);
+    } else {
+      setIndex(index + 1);
     }
   }
 

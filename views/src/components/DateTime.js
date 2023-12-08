@@ -3,16 +3,14 @@ import '../styles/TopBar.css';
 
 export const DateTime = () => {
   var [date, setDate] = useState(new Date());
-  try {
-    useEffect(() => {
-      var timer = setInterval(() => setDate(new Date()), 1000);
-      return function cleanup() {
-        clearInterval(timer);
-      };
-    });
-  } catch (err) {
-    console.log(`Error in DateTime\n ${err}`);
-  }
+
+  useEffect(() => {
+    var timer = setInterval(() => setDate(new Date()), 1000);
+    return function cleanup() {
+      clearInterval(timer);
+    };
+  });
+
   return (
     <div className="body">
       <div className="time">
