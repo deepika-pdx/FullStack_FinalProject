@@ -42,8 +42,8 @@ userSchema.methods.generateAuthToken = function () {
   return token;
 };
 const User = mongoose.model('User', userSchema);
-const validate = (data) => {
-  try {
+try {
+  const validate = (data) => {
     const schema = Joi.object({
       firstName: Joi.string().required().label('First Name'),
       lastName: Joi.string().required().label('Last Name'),
@@ -51,9 +51,10 @@ const validate = (data) => {
       password: passwordComplexity().required().label('Password'),
       waterGlassCount: Joi.number().required(),
     });
-  } catch (err) {
-    console.log(err);
-  }
-  return schema.validate(data);
-};
+
+    return schema.validate(data);
+  };
+} catch (err) {
+  console.log(err);
+}
 module.exports = { User, validate };
