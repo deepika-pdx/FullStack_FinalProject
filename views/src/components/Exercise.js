@@ -15,14 +15,10 @@ function Exercise() {
   const [index, setIndex] = useState(0);
 
   function handlePreviousExercise() {
-    try {
-      if (index === 0) {
-        setIndex(7);
-      } else {
-        setIndex(index - 1);
-      }
-    } catch (err) {
-      console.log(err);
+    if (index === 0) {
+      setIndex(7);
+    } else {
+      setIndex(index - 1);
     }
   }
 
