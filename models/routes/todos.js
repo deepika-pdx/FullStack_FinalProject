@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 //import todo model
-const todoItemsModel = require('../mongodb/todoTaks');
+const todoItemsModel = require('../mongodb/todoTask');
 
 //create first route --add Todo Item to database
 router.post('/todos', async (req, res) => {
