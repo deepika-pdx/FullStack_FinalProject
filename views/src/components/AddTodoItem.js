@@ -16,7 +16,7 @@ const AddToDoItem = (props) => {
           } else {
             let formattedDate = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
             console.log(formattedDate);
-            const res = await axios.post("http://localhost:3001/todos", { item: itemText, date: formattedDate, email: props.user });
+            const res = await axios.post("/todos", { item: itemText, date: formattedDate, email: props.user });
             const current = new Date();
             if (current.getTime() < startDate.getTime()) {
                 props.setListItemsup((prev) => [...prev, res.data]);

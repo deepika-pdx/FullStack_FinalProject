@@ -3,6 +3,7 @@
 const router = require('express').Router();
 const { User, validate } = require('../mongodb/User');
 const bcrypt = require('bcryptjs');
+
 router.post('/users', async (req, res) => {
   try {
     const { error } = validate(req.body);

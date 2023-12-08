@@ -1,21 +1,10 @@
 /** @format */
 
-const { localStorage } = require('node-localstorage');
 const router = require('express').Router();
-const todoItemsModel = require('../mongodb/todoTask');
-const bodyParser = require('body-parser');
+//import todo model
+const todoItemsModel = require('../mongodb/todoTaks');
 
-function getCurrentDate() {
-  let ts = Date.now();
-  let date_ob = new Date(ts);
-  let date = date_ob.getDate();
-  let month = date_ob.getMonth() + 1;
-  let year = date_ob.getFullYear();
-  let currentDate = month + '/' + date + '/' + year;
-  return currentDate;
-}
-
-//Add Todo Item to the database
+//create first route --add Todo Item to database
 router.post('/todos', async (req, res) => {
   try {
     const newItem = new todoItemsModel({
@@ -23,6 +12,8 @@ router.post('/todos', async (req, res) => {
       date: req.body.date,
       email: req.body.email,
     });
+
+    //save this item in database
     const saveItem = await newItem.save();
     res.status(200).json(saveItem);
   } catch (err) {
@@ -30,36 +21,52 @@ router.post('/todos', async (req, res) => {
   }
 });
 
-//Get data from the database
+//create second route -- get data from database
 router.get('/todos', async (req, res) => {
   try {
-    let currentDate = getCurrentDate();
+    let ts = Date.now();
+
+    let date_ob = new Date(ts);
+    let date = date_ob.getDate();
+    let month = date_ob.getMonth() + 1;
+    let year = date_ob.getFullYear();
+    let current_date = month + '/' + date + '/' + year;
     console.log('EMAIL' + req.query.email);
     const allTodoItems = await todoItemsModel.find({
-      $and: [{ email: req.query.email, date: currentDate }],
+      $and: [{ email: req.query.email, date: current_date }],
     });
 
     console.log(allTodoItems);
+    // prints date & time in YYYY-MM-DD format
+    //const allTodoItems =  todoItemsModel.find().populate({match: { date: "2022-11-21"}}).exec();
     res.status(200).json(allTodoItems);
   } catch (err) {
     res.json(err);
   }
 });
 
-//Get data for tomorrow
 router.get('/todostomorrow', async (req, res) => {
   try {
-    let currentDate = getCurrentDate();
+    let ts = Date.now();
+
+    let date_ob = new Date(ts);
+    let date = date_ob.getDate();
+    let month = date_ob.getMonth() + 1;
+    let year = date_ob.getFullYear();
+    let current_date = month + '/' + date + '/' + year;
     const allTodoItems = await todoItemsModel
-      .find({ email: req.query.email, date: { $ne: currentDate } })
+      .find({ email: req.query.email, date: { $ne: current_date } })
       .sort({ date: 1 });
+
+    // prints date & time in YYYY-MM-DD format
+    //const allTodoItems =  todoItemsModel.find().populate({match: { date: "2022-11-21"}}).exec();
     res.status(200).json(allTodoItems);
   } catch (err) {
     res.json(err);
   }
 });
 
-//Find an item by its ID and update it
+//update item
 router.put('/todos', async (req, res) => {
   if (req.body.item != null) {
     todoItemsModel.findByIdAndUpdate(
@@ -77,8 +84,6 @@ router.put('/todos', async (req, res) => {
     );
   }
 });
-
-//Mark a todo item as complete
 router.get('/todo/complete/:id', async (req, res) => {
   const todo = await todoItemsModel.findById(req.params.id);
   if (todo != null) {
@@ -88,9 +93,10 @@ router.get('/todo/complete/:id', async (req, res) => {
   }
 });
 
-//Find the item by its id and delete it from the database
+//Delete item from database
 router.delete('/todos/:id', async (req, res) => {
   try {
+    //find the item by its id and delete it
     console.log('IN DELETE ID IS ' + req.params.id);
     const deleteItem = await todoItemsModel.findByIdAndDelete(req.params.id);
     res.status(200).json('Item Deleted');
@@ -100,4 +106,5 @@ router.delete('/todos/:id', async (req, res) => {
   }
 });
 
+//export router
 module.exports = router;

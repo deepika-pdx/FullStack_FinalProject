@@ -23,7 +23,7 @@ const UpdateTodoItem = (props) => {
         e.preventDefault();
         try {
             if (updateItemText.length !== 0) {
-                const res = await axios.put(`http://localhost:3001/todos`, { item: updateItemText, id: isUpdating });
+                const res = await axios.put(`/todos`, { item: updateItemText, id: isUpdating });
                 console.log(res.data);
                 const updatedItemIndex = props.listItems.findIndex((item) => item._id === isUpdating);
                 (props.listItems[updatedItemIndex].item = updateItemText);
@@ -40,7 +40,7 @@ const UpdateTodoItem = (props) => {
 
     // Mark the todo item as complete
     const completeTodo = async (id) => {
-        const data = await fetch("http://localhost:3001/todo/complete/" + id).then((res) => res.json());
+        const data = await fetch("/todo/complete/" + id).then((res) => res.json());
         props.setListItems((listItems) =>
           listItems.map((item) => {
             if (item._id === data._id) {
@@ -54,7 +54,7 @@ const UpdateTodoItem = (props) => {
     // Delete item when click on delete
     const deleteItem = async (id) => {
         try {
-            await axios.delete(`http://localhost:3001/todos/${id}`);
+            await axios.delete(`/todos/${id}`);
             const newListItems = props.listItems.filter((item) => item._id !== id);
             props.setListItems(newListItems);
         } catch (err) {
