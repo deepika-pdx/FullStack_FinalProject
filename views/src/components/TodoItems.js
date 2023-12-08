@@ -17,7 +17,7 @@ const TodoItems = () => {
   useEffect(() => {
     const getItemsList = async () => {
       fetch(
-        "http://localhost:3001/todostomorrow?" +
+        "/todostomorrow?" +
           new URLSearchParams({
             email: user,
           })
@@ -33,7 +33,7 @@ const TodoItems = () => {
   useEffect(() => {
     const getTodos = async () => {
       fetch(
-        "http://localhost:3001/todos?" +
+        "/todos?" +
           new URLSearchParams({
             email: user,
           })

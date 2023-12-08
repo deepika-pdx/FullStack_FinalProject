@@ -46,7 +46,7 @@ const UpcomingTodoItem = (props) => {
 
     const deleteItemup = async (id) => {
         try {
-          await axios.delete(`http://localhost:3001/todos/${id}`);
+          await axios.delete(`/todos/${id}`);
           const newListItems = props.listItemsup.filter((item) => item._id !== id);
           props.setListItemsup(newListItems);
         } catch (err) {
@@ -63,7 +63,7 @@ const UpcomingTodoItem = (props) => {
           if (updateItemTextup.length !== 0 && dateup.length !== 0) {
             let formattedDate = `${updateDate.getMonth() + 1}/${updateDate.getDate()}/${updateDate.getFullYear()}`;
             console.log(formattedDate);
-            const res = await axios.put(`http://localhost:3001/todos`, {
+            const res = await axios.put(`/todos`, {
               item: updateItemTextup,
               id: isUpdatingup,
               date: formattedDate,
@@ -88,7 +88,7 @@ const UpcomingTodoItem = (props) => {
       };
     
       const completeTodoup = async (id) => {
-        const data = await fetch("http://localhost:3001/todo/complete/" + id).then((res) => res.json());
+        const data = await fetch("/todo/complete/" + id).then((res) => res.json());
     
         props.setListItemsup((listItemsup) =>
           listItemsup.map((item) => {
