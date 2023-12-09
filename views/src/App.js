@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";

@@ -54,6 +54,16 @@
   transition: 0.5s;
   cursor: pointer;
 }
+.todo-no-tasks {
+  text-align: center;
+}
+
+.todo-no-upcoming-tasks {
+  display: flex;
+  background-color: white;
+  color: #f4976c;
+  font-size: small;
+}
 .todo-tem:hover {
   opacity: 0.8;
   background-color: yellow;

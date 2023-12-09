@@ -8,11 +8,12 @@
   padding: 0;
   box-sizing: border-box;
   overflow-y: scroll;
-  direction: rtl;
+  background-size: 100%;
 }
 .accordion {
   width: 100%;
   margin: 0.2rem auto;
+  background-size: 100%;
 }
 .accordion-title {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -40,6 +41,8 @@
   text-align: center;
   color: black;
   direction: ltr;
+  width: 100%;
+  background-size: 100%;
 }
 @media (min-width: 768px) and (max-width: 1024px) {
   .section {
