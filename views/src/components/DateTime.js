@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/TopBar.css';
-
+//This component displays current date and time in the top bar
 export const DateTime = () => {
   var [date, setDate] = useState(new Date());
 

@@ -11,8 +11,11 @@ import fullbodyExercise2 from '../images/Exercise/fullbody_exercise_2.jfif';
 import headExercise from '../images/Exercise/head_exercise.png';
 import '../styles/Exercise.css';
 
+//This component displays the images for the different exercises
 function Exercise() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0); // State to keep track of the current index for exercise images
+
+  // Function to handle the previous button click
 
   function handlePreviousExercise() {
     if (index === 0) {
@@ -21,6 +24,8 @@ function Exercise() {
       setIndex(index - 1);
     }
   }
+
+  // Function to handle the next button click
 
   function handleNextExercise() {
     if (index === 7) {

@@ -1,7 +1,6 @@
 /** @format */
 
 const router = require('express').Router();
-//import todo model
 const todoItemsModel = require('../mongodb/todoTask');
 
 //create first route --add Todo Item to database
@@ -13,7 +12,7 @@ router.post('/todos', async (req, res) => {
       email: req.body.email,
     });
 
-    //save this item in database
+    //save this item in the database
     const saveItem = await newItem.save();
     res.status(200).json(saveItem);
   } catch (err) {
@@ -37,8 +36,6 @@ router.get('/todos', async (req, res) => {
     });
 
     console.log(allTodoItems);
-    // prints date & time in YYYY-MM-DD format
-    //const allTodoItems =  todoItemsModel.find().populate({match: { date: "2022-11-21"}}).exec();
     res.status(200).json(allTodoItems);
   } catch (err) {
     res.json(err);
@@ -58,8 +55,6 @@ router.get('/todostomorrow', async (req, res) => {
       .find({ email: req.query.email, date: { $ne: current_date } })
       .sort({ date: 1 });
 
-    // prints date & time in YYYY-MM-DD format
-    //const allTodoItems =  todoItemsModel.find().populate({match: { date: "2022-11-21"}}).exec();
     res.status(200).json(allTodoItems);
   } catch (err) {
     res.json(err);
@@ -106,5 +101,4 @@ router.delete('/todos/:id', async (req, res) => {
   }
 });
 
-//export router
 module.exports = router;
