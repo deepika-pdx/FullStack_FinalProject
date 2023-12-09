@@ -1,7 +1,4 @@
 /** @format */
-/**
- * This component handles user authentication
- */
 
 const router = require('express').Router();
 const { User } = require('../mongodb/User');
@@ -34,7 +31,7 @@ router.post('/auth', async (req, res) => {
     res.status(500).send({ message: 'Internal Server Error!' });
   }
 });
-// Generate JWT token
+
 const validate = (data) => {
   const schema = Joi.object({
     email: Joi.string().email().required().label('Email'),

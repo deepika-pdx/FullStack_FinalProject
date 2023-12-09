@@ -5,6 +5,7 @@
 const router = require('express').Router();
 const { User } = require('../mongodb/User');
 
+// Router handles operations related to updating and fetching the water glass count for a user.
 router.post('/fetchWaterGlassCount', async (req, res) => {
   try {
     const uEmail = req.body.email;

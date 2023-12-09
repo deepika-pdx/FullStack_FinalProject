@@ -1,9 +1,5 @@
 /** @format */
 
-/**
- * This component defines a router that handles CRUD (Create, Read, Update, Delete) operations for the
- * to-do list stored in a MongoDB database.
- */
 const router = require('express').Router();
 const todoItemsModel = require('../mongodb/todoTask');
 

@@ -1,13 +1,10 @@
 /** @format */
-/**
- * This code defines a Mongoose schema for a user, includes methods for generating
- * JSON Web Tokens (JWTs), and exports both the Mongoose model and a validation function
- * using Joi for user input.
- */
+
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const Joi = require('joi');
 const passwordComplexity = require('joi-password-complexity');
+/* This code defines a Mongoose schema for a user.*/
 const userSchema = new mongoose.Schema(
   {
     firstName: {
@@ -46,8 +43,10 @@ userSchema.methods.generateAuthToken = function () {
   }
   return token;
 };
+
 const User = mongoose.model('User', userSchema);
 try {
+  // validating user details
   const validate = (data) => {
     const schema = Joi.object({
       firstName: Joi.string().required().label('First Name'),

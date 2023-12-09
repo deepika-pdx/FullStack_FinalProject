@@ -1,9 +1,8 @@
 const router = require('express').Router();
 const axios = require('axios');
 
-/**
- * This component defines a route that makes a request to an external API to fetch the latest news data.
- */
+//This component defines a route that makes a request to an external API to fetch the latest news data.
+
 router.get('/latestNews', async (req, res) => {
   try {
     const newsData = await axios.get(

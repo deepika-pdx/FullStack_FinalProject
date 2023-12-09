@@ -1,8 +1,7 @@
-/**
- * This component defines a route that retrieves data from a MongoDB collection named thoughtdata.
- */
 const router = require('express').Router();
 const { ThoughtData } = require('../mongodb/thoughtdata');
+
+//This component defines a route that retrieves data from a MongoDB collection named thoughtdata.
 
 router.get('/thoughts', async (req, res) => {
   // Retrieve all thought data from the MongoDB collection
