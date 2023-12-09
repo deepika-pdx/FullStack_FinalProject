@@ -1,15 +1,18 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "../styles/NewsBar.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../styles/NewsBar.css';
+
+// Component for displaying a news bar
 
 function NewsBar() {
-  const [latestNews, setLatestNews] = useState("");
+  const [latestNews, setLatestNews] = useState('');
 
+  // Fetch news from the server
   const fetchNews = async () => {
     try {
-      const news = await axios.get("/latestNews");
+      const news = await axios.get('/latestNews');
       const data = news.data;
       if (data != null) {
         const newsList = [];
@@ -32,9 +35,9 @@ function NewsBar() {
         setLatestNews(newsList);
       }
     } catch (e) {
-      if (e.message === "Request failed with status code 429") {
-        console.log("Per day request limit reached for NewsData.io API..!!");
-        setLatestNews("Per day request limit reached for NewsData.io API..!!");
+      if (e.message === 'Request failed with status code 429') {
+        console.log('Per day request limit reached for NewsData.io API..!!');
+        setLatestNews('Per day request limit reached for NewsData.io API..!!');
       } else {
         console.log(e);
       }
