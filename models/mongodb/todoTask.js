@@ -1,7 +1,7 @@
 //import mongoose to create mongoose model
 const mongoose = require('mongoose');
 
-//create Schema
+//creating todo schema
 const TodoItemSchema = new mongoose.Schema({
   item: {
     type: String,
@@ -18,5 +18,4 @@ const TodoItemSchema = new mongoose.Schema({
   },
 });
 
-//export this Schema
 module.exports = mongoose.model('todotask', TodoItemSchema);

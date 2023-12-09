@@ -1,4 +1,9 @@
 /** @format */
+/**
+ * This code defines a Mongoose schema for a user, includes methods for generating
+ * JSON Web Tokens (JWTs), and exports both the Mongoose model and a validation function
+ * using Joi for user input.
+ */
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const Joi = require('joi');
