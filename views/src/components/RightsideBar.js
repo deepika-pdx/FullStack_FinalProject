@@ -9,7 +9,11 @@ import { SplitPane } from 'react-multi-split-pane';
 //This component displays a random thought and the NearByEvent in the right side of the screen.
 
 function RightsideBar() {
+<<<<<<< Updated upstream
   const [simpleThought, setSimpleThought] = useState('');
+=======
+    const [simpleThought, setSimpleThought] = useState('');
+>>>>>>> Stashed changes
 
   const fetchThoughtData = async () => {
     const thoughtResult = await axios.get('/thoughts');
@@ -21,10 +25,14 @@ function RightsideBar() {
     // Fetch thoughts from DailyDiaryDatabase
     try {
       fetchThoughtData();
+<<<<<<< Updated upstream
     } catch (err) {
       console.log(err);
     }
   }, []);
+=======
+    }, []);
+>>>>>>> Stashed changes
 
   return (
     <SplitPane split="horizontal" defaultSizes={[150, 330]}>
