@@ -1,6 +1,7 @@
-// Component for displaying events in an accordion format
 import React, { useState } from 'react';
 import '../styles/NearbyEvents.css';
+
+//This component displays a list of events
 
 const EventsDisplay = ({ title, content, fields }) => {
   const [isActive, setIsActive] = useState(false);

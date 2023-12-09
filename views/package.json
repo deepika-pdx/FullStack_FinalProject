@@ -37,7 +37,8 @@
     "start": "react-scripts start",
     "build": "webpack --config webpack.config.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docs": "typedoc --out docs --plugin typedoc-plugin-react src"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +59,13 @@
     ]
   },
   "devDependencies": {
-    "webpack-cli": "^5.0.0"
+    "webpack-cli": "^5.0.0",
+    "typedoc": "^0.22.2",
+    "typedoc-plugin-react": "^2.2.0"
+  },
+  "typedocOptions": {
+    "name": "Daily Dairy",
+    "out": "docs",
+    "readme": "none"
   }
 }

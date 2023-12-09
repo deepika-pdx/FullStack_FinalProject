@@ -1,27 +1,29 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
-import DateTime from "./DateTime";
-import axios from "axios";
-import Weather from "./Weather";
-import "../styles/TopBar.css";
-import weather from "../images/Weather/Weather.png";
+import React, { useEffect, useState } from 'react';
+import DateTime from './DateTime';
+import axios from 'axios';
+import Weather from './Weather';
+import '../styles/TopBar.css';
+import weather from '../images/Weather/Weather.png';
+
+//This component displays the title, current date, time and weather components.
 
 export function TopBar() {
-  const user = localStorage.getItem("email");
+  const user = localStorage.getItem('email');
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
     window.location.reload();
   };
 
-  // State
   const [data, setData] = useState([]);
 
+  // get the user data
   const getUser = async () => {
     try {
-      const url = "http://localhost:3001/auth";
+      const url = 'http://localhost:3001/auth';
       const { data } = await axios.get(url, { withCredentials: true });
       setData(data.user._json);
     } catch (err) {
@@ -36,6 +38,7 @@ export function TopBar() {
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
 
+  //getting current location position
   useEffect(() => {
     const fetchData = async () => {
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -43,7 +46,7 @@ export function TopBar() {
         setLong(position.coords.longitude);
       });
 
-      // Weather
+      // Fetching the weather data from the API
       await fetch(
         `https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=metric&APPID=0dcd57de15dc5818f6f4502b50eb8975`
       )
@@ -78,9 +81,15 @@ export function TopBar() {
         </ul>
         <div>
           <div>
-            <DateTime></DateTime>{" "}
+            <DateTime></DateTime>{' '}
           </div>
-          <div>{typeof data.main != "undefined" ? <Weather weatherData={data} /> : <div></div>}</div>
+          <div>
+            {typeof data.main != 'undefined' ? (
+              <Weather weatherData={data} />
+            ) : (
+              <div></div>
+            )}
+          </div>
         </div>
       </div>
     </>

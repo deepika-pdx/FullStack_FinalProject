@@ -1,5 +1,7 @@
 /** @format */
+
 const mongoose = require('mongoose');
+//Connecting to the database.
 const url =
   'mongodb+srv://dailyuser:DailyDairy565@dailydairycluster.oj0wdsh.mongodb.net/DailyDatabase?retryWrites=true&w=majority';
 const connectionParams = {
