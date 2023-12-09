@@ -11,6 +11,10 @@ import fullbodyExercise2 from '../images/Exercise/fullbody_exercise_2.jfif';
 import headExercise from '../images/Exercise/head_exercise.png';
 import '../styles/Exercise.css';
 
+/**
+ * This component displays the images for the different exercises
+ * @returns
+ */
 function Exercise() {
   const [index, setIndex] = useState(0); // State to keep track of the current index for exercise images
 

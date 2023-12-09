@@ -4,6 +4,11 @@ import Icon from 'react-crud-icons';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
 
+/**
+ *  Functional component for rendering upcoming todo items
+ * @param {*} props
+ * @returns
+ */
 const UpcomingTodoItem = (props) => {
   const [open, setOpen] = useState(false);
   const [isUpdatingup, setIsUpdatingup] = useState('');
@@ -13,6 +18,7 @@ const UpcomingTodoItem = (props) => {
   const closeModal = () => setOpen(false);
 
   const renderUpdateFormup = () => (
+    // Update form for the todo items
     <form
       className="update-form"
       onSubmit={(e) => {
@@ -62,6 +68,7 @@ const UpcomingTodoItem = (props) => {
     </form>
   );
 
+  //Function to delete a todo item from the list
   const deleteItemup = async (id) => {
     try {
       await axios.delete(`/todos/${id}`);
@@ -71,6 +78,8 @@ const UpcomingTodoItem = (props) => {
       console.log(err);
     }
   };
+
+  //Function to update a todo item with date in the todo list
 
   const updateItemup = async (e, open) => {
     e.preventDefault();

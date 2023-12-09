@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import '../styles/NearbyEvents.css';
 
-// Component for displaying events
+/**
+ * This component displays a list of events
+ * @param {*} param0
+ * @returns
+ */
 
 const EventsDisplay = ({ title, content, fields }) => {
   const [isActive, setIsActive] = useState(false);

@@ -3,6 +3,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Main from './Main';
 
+/**
+ * This component displays the login screen
+ * @returns
+ */
+
 function Login() {
   // State variables to manage form data, error messages, and navigation
   const [data, setData] = useState({ email: '', password: '' });
