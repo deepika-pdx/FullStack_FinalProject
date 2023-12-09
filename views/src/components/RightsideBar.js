@@ -10,7 +10,6 @@ import { SplitPane } from 'react-multi-split-pane';
 
 function RightsideBar() {
   const [simpleThought, setSimpleThought] = useState('');
-
   const fetchThoughtData = async () => {
     const thoughtResult = await axios.get('/thoughts');
     const thoughtId = Math.floor(Math.random() * 10);
@@ -25,6 +24,7 @@ function RightsideBar() {
       console.log(err);
     }
   }, []);
+
 
   return (
     <SplitPane split="horizontal" defaultSizes={[150, 330]}>

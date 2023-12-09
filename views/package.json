@@ -36,9 +36,38 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "webpack --config webpack.config.js",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
-    "docs": "typedoc --out docs --plugin typedoc-plugin-react src"
+    "test:coverage": "jest --coverage"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "testEnvironment": "jsdom",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -60,12 +89,7 @@
   },
   "devDependencies": {
     "webpack-cli": "^5.0.0",
-    "typedoc": "^0.22.2",
-    "typedoc-plugin-react": "^2.2.0"
+    "jest": "^27.5.1" 
   },
-  "typedocOptions": {
-    "name": "Daily Dairy",
-    "out": "docs",
-    "readme": "none"
-  }
+  "plugins": "@babel/plugin-syntax-jsx"
 }

@@ -25,7 +25,7 @@ function WaterTracker() {
       waterGlassCount: fullGlassCount + 1,
     };
     const glassCountResult = await axios.post(
-      'http://localhost:3001/updateWaterGlassCount',
+      '/updateWaterGlassCount',
       reqUserData
     );
     if (glassCountResult === null || glassCountResult.status !== 200) {
@@ -40,7 +40,7 @@ function WaterTracker() {
         const userEmail = localStorage.getItem('email');
         const reqUserData = { email: userEmail };
         const glassCountResult = await axios.post(
-          'http://localhost:3001/fetchWaterGlassCount',
+          '/fetchWaterGlassCount',
           reqUserData
         );
         if (glassCountResult !== null && glassCountResult.status === 200) {

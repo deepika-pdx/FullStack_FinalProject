@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import Popup from 'reactjs-popup';
-import Icon from 'react-crud-icons';
-import DatePicker from 'react-datepicker';
-import axios from 'axios';
+import React from 'react';
+import { useState } from "react";
+import Popup from "reactjs-popup";
+import Icon from "react-crud-icons";
+import DatePicker from "react-datepicker";
+import axios from "axios";
 
 //Functional component for rendering upcoming todo items
 
@@ -142,7 +143,7 @@ const UpcomingTodoItem = (props) => {
           </button>
           <div className="content">
             <div className="todo-listItems">
-              {Array.isArray(props.listItemsup)
+            {props.listItemsup.length > 0
                 ? props.listItemsup.map((item, index) => (
                     <div className={index % 2 === 0 ? 'bck-blue' : 'bck-white'}>
                       <div className="todo-item">
@@ -188,7 +189,7 @@ const UpcomingTodoItem = (props) => {
                       </div>
                     </div>
                   ))
-                : null}
+                : <p className='todo-no-upcoming-tasks'>"No upcoming tasks!"</p>}
             </div>
           </div>
         </div>
