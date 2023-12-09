@@ -12,13 +12,7 @@ function NewsBar() {
   // Fetch news from the server
   const fetchNews = async () => {
     try {
-<<<<<<< Updated upstream
       const news = await axios.get('/latestNews');
-=======
-      const news = await axios.get("/latestNews");
-      console.log("Inside news")
-      console.log(news);
->>>>>>> Stashed changes
       const data = news.data;
       if (data != null) {
         const newsList = [];

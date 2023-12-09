@@ -45,14 +45,9 @@ userSchema.methods.generateAuthToken = function () {
 };
 
 const User = mongoose.model('User', userSchema);
-<<<<<<< Updated upstream
-try {
-  // validating user details
-  const validate = (data) => {
-=======
 
+ // validating user details
 const validate = (data) => {
->>>>>>> Stashed changes
     const schema = Joi.object({
       firstName: Joi.string().required().label('First Name'),
       lastName: Joi.string().required().label('Last Name'),
