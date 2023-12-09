@@ -4,10 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/NewsBar.css';
 
-/**
- * This component displays the latest news in the news bar
- * @returns
- */
+//This component displays the latest news in the news bar
 
 function NewsBar() {
   const [latestNews, setLatestNews] = useState('');

@@ -11,10 +11,7 @@ import recipeIcon from '../images/Fun_Activities/recipe_icon.png';
 import '../styles/FunActivities.css';
 import Tooltip from '@material-ui/core/Tooltip';
 
-/**
- * This component displays a collection of fun activities.
- * @returns
- */
+//This component displays a collection of fun activities.
 
 function FunActivities() {
   return (

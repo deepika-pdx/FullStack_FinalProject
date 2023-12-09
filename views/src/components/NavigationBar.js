@@ -2,9 +2,7 @@ import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 
-/**
- * Styling for the NavigationBar
- */
+//Styling for the NavigationBar
 
 const Styles = styled.div`
   .navbar {

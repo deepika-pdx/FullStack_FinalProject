@@ -6,10 +6,8 @@ import '../styles/RightsideBar.css';
 import NearbyEvents from './NearbyEvents';
 import { SplitPane } from 'react-multi-split-pane';
 
-/**
- *This component displays a random thought and the NearByEvent in the right side of the screen.
- * @returns
- */
+//This component displays a random thought and the NearByEvent in the right side of the screen.
+
 function RightsideBar() {
   const [simpleThought, setSimpleThought] = useState('');
 

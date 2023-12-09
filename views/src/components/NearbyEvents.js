@@ -3,10 +3,7 @@
 import React from 'react';
 import EventsDisplay from './EventsDisplay';
 
-/**
- * This component displays a list of nearby events.
- * @returns
- */
+//This component displays a list of nearby events.
 const Events = () => {
   // Data for events
   const accordionData = [

@@ -8,10 +8,8 @@ import fullGlassIcon from '../images/WaterTracker/full_glass_icon.svg';
 import '../styles/WaterTracker.css';
 import Popup from 'reactjs-popup';
 
-/**
- * This component displays the water tracker component which tracks the amount of water you drink in a day.
- * @returns
- */
+//This component tracks the amount of water you drink in a day.
+
 function WaterTracker() {
   const [emptyGlassCount, setEmptyGlassCount] = useState(8);
   const [emptyGlassArray, setEmptyGlassArray] = useState([]);

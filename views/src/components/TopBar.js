@@ -7,10 +7,8 @@ import Weather from './Weather';
 import '../styles/TopBar.css';
 import weather from '../images/Weather/Weather.png';
 
-/**
- * This component displays the title, current date, time and weather components.
- * @returns
- */
+//This component displays the title, current date, time and weather components.
+
 export function TopBar() {
   const user = localStorage.getItem('email');
 

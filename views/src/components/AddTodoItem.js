@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
-/**
- * Component for adding a new to-do item
- * @param {*} props
- * @returns
- */
+//Component for adding a new to-do item
 const AddToDoItem = (props) => {
   const [itemText, setItemText] = useState('');
   const [startDate, setStartDate] = useState(new Date());

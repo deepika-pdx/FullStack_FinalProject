@@ -5,10 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/signUp.css';
 
-/**
- * This component displays the signup screen for new users
- * @returns
- */
+//This component displays the signup screen for new users
+
 const Signup = () => {
   const [data, setData] = useState({
     firstName: '',

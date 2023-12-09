@@ -8,10 +8,8 @@ import '../styles/TodoItems.css';
 import AddTodoItem from './AddTodoItem';
 import UpdateTodoItem from './UpdateTodoItem';
 import UpcomingTodoItem from './UpcomingTodoItem';
-/**
- * This components displays the todo items including AddTodoItems, UpdateTodoItems and UpcomingTodoItems.
- * @returns
- */
+
+//This components displays the todo items including AddTodoItems, UpdateTodoItems and UpcomingTodoItems.
 
 const TodoItems = () => {
   const [listItems, setListItems] = useState([]);

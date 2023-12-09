@@ -1,11 +1,8 @@
 import React from 'react';
 import '../styles/Weather.css';
 
-/**
- * This component displays the weather data in a tabular format
- * @param {*} param0
- * @returns
- */
+//This component displays the weather data in a tabular format
+
 const Weather = ({ weatherData }) => (
   <table className="content">
     <tr>

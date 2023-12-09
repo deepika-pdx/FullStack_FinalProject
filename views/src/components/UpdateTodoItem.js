@@ -2,11 +2,8 @@ import Icon from 'react-crud-icons';
 import { useState } from 'react';
 import axios from 'axios';
 
-/**
- * This component updates the todo items
- * @param {*} props
- * @returns
- */
+//This component updates the todo items
+
 const UpdateTodoItem = (props) => {
   const [isUpdating, setIsUpdating] = useState('');
   const [updateItemText, setUpdateItemText] = useState('');

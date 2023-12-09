@@ -4,11 +4,8 @@ import Icon from 'react-crud-icons';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
 
-/**
- *  Functional component for rendering upcoming todo items
- * @param {*} props
- * @returns
- */
+//Functional component for rendering upcoming todo items
+
 const UpcomingTodoItem = (props) => {
   const [open, setOpen] = useState(false);
   const [isUpdatingup, setIsUpdatingup] = useState('');
